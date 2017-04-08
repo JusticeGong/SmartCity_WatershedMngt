@@ -14,7 +14,7 @@ def index(request):
 def detail(request, watershed_id):
         watershed = get_object_or_404(Watershed, pk=watershed_id)
         context = {
-            'watershed':watershed
+            'watershed': watershed
         }
         return render(request, 'watershed/detail.html', context)
 
