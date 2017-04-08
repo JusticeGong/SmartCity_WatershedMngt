@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^f)q28^8slc^4)vhp1igb%x%17xx^3y%*0vb-l+v^6x%7_g2^!'
+SECRET_KEY = 'pt193_g02ov$ee10lc*l5wgp-=6opcj_d20uxh2#ismcjr8w2$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'watershed.apps.WatershedConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
