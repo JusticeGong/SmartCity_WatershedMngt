@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>detail</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="jumbotron text-center">
+        <h1>Watershed Application</h1>
+        <p>List of Watersheds</p>
+    </div>
+
     <img src="{{ watershed.watershed_logo }}" height="400px" width="200px">
 
     <h1> {{ watershed.watershedID }} </h1>
