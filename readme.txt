@@ -29,3 +29,9 @@ Function:
 Function:
     Store 7 Data table models
 
+
+========Admin Account========
+Username: smartcities
+Password: watershed
+
+
