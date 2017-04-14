@@ -16,6 +16,9 @@ class Watershed(models.Model):
     def __str__(self):
         return self.name
 
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in Watershed._meta.fields]
+
 class ffInfo(models.Model):
     florafaunaID = models.CharField(max_length=20)
     watershedID = models.CharField(max_length=20)
@@ -46,6 +49,9 @@ class Maintenance(models.Model):
     def __str__(self):
         return self.issue
 
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in Maintenance._meta.fields]
+
 class ManmadeFeature(models.Model):
     featureID = models.CharField(max_length=20)
     watershedID = models.CharField(max_length=20)
@@ -55,6 +61,9 @@ class ManmadeFeature(models.Model):
     def __str__(self):
         return self.name
 
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in ManmadeFeature._meta.fields]
+
 class NaturalFeature(models.Model):
     featureID = models.CharField(max_length=20)
     watershedID = models.CharField(max_length=20)
@@ -63,6 +72,9 @@ class NaturalFeature(models.Model):
 
     def __str__(self):
         return self.name
+
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in NaturalFeature._meta.fields]
 
 class Observation(models.Model):
     observationID = models.CharField(max_length=20)
@@ -74,6 +86,9 @@ class Observation(models.Model):
 
     def __str__(self):
         return self.description
+
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in Observation._meta.fields]
 
 
 
