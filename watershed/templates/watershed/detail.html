@@ -5,33 +5,116 @@
     <title>detail</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+
+    <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
 </head>
+
 <body>
     <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
         <p>Detail view</p>
     </div>
+    <div class="row">
+        
     <!--Detail view-->
     <div class="container-fluid">
         <div class="page-header text-center">
           <h1>{{ watershed.name }}<small></small></h1>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <img src="{{ watershed.watershed_logo }}" height="400px" width="200px">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-           
-            <h3>  {{ watershed.watershedID }} </h3>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="panel panel-primary">
+            <!-- Default panel contents -->
+                <div class="panel-heading">Watershed Information</div>
+                <table class="table table-striped table-condensed">
+                        {% for name, value in watershed.attrs %}
+                         <tr>
+                            <td class="text-right"><strong>{{name}}</strong></td> 
+                            <td>{{value}}</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
             <ul>
                 {% for florafauna in watershed.florafauna_set.all %}
                 <li> {{ florafauna.name }} </li>
                 {% endfor %}
             </ul>
         </div>
+
+        <!--Image-->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <img src="{{ watershed.watershed_logo }}" height="200px" width="100%">     
+        </div>
+
+        <!--Map-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
+        </div>
     </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div role="tabpanel">
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs nav-justified" role="tablist">
+                      <li role="presentation" class="active">
+                          <a href="#features" aria-controls="Features" role="tab" data-toggle="tab">Features</a>
+                      </li>
+                      <li role="presentation">
+                          <a href="#maintenance" aria-controls="maintenance" role="tab" data-toggle="tab">Maintenance</a>
+                      </li>
+                        <li role="presentation">
+                          <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">Flora & Fauna</a>
+                      </li>
+                  </ul>
+              
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="features">alist of features.../div>
+                      <div role="tabpanel" class="tab-pane" id="maintenance">list of maintenance</div>
+                      <div role="tabpanel" class="tab-pane" id="floraAndfauna">list of flora and fauna</div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
     
     
+
+
+
+
+<!--Javascript code-->
+{% block js %}
+    <script>
+    function initMap() {
+        var urlMap = {lat: 12.927923, lng: 77.627108};
+        var uluru = {lat: 12.927823, lng: 77.627208};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: urlMap
+        });
+
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          title: "Deer 1",
+        });
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiw0iU0egdeVrOKboOOZ2n1WXS3Os0WgI&callback=initMap"></script>
+
+{% endblock %}
 </body>
 </html>
