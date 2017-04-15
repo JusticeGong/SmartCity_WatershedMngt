@@ -30,8 +30,11 @@ Function:
     Store 7 Data table models
 
 
-========Admin Account========
+========Django Admin Account========
 Username: smartcities
 Password: watershed
 
 
+========MySQL Account========
+Username: smart_city
+Password: smartcity2
