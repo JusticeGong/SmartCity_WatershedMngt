@@ -9,7 +9,7 @@ urlpatterns = [
     # url(r'^(?P<watershed_id>[0-9]+)/$', views.detail, name="detail"),
     #url(r'^watershed_view/(?P<pk>\d+)$', views.watershed_view, name='watershed_view'),
     url(r'^watershed_new$', views.watershed_create, name='watershed_new'),
-    url(r'^watershed_edit$', views.watershed_update, name='watershed_edit'),
-    url(r'^watershed_delete$', views.watershed_delete, name='watershed_delete'),
+    url(r'^(?P<pk>.*)/update$', views.watershed_update, name='watershed_update'),
+    url(r'^(?P<pk>.*)/delete$', views.watershed_delete, name='watershed_delete'),
 ]
 

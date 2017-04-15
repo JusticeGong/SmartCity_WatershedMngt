@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from .models import Watershed
+from watershed.models import Watershed
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm
@@ -10,7 +10,7 @@ from django.forms import ModelForm
 class WatershedForm(ModelForm):
     class Meta:
      model = Watershed
-     fields = ['watershedID', 'name', 'percentLand', 'supportsTourism', 'watershedDescription', 'location']
+     fields = ['name', 'percentLand', 'supportsTourism', 'watershedDescription', 'location']
 
 # ========== Home =========
 
@@ -47,12 +47,14 @@ def watershed_create(request, template_name='watershed/watershed_form.html'):
     return render(request, template_name, ctx)
 
 
-def watershed_update(request, pk, template_name='watershed/watershed_form.html'):
+def watershed_update(request, pk, template_name='watershed/watershed_update.html'):
     watershed = get_object_or_404(Watershed, pk=pk)
     form = WatershedForm(request.POST or None, instance=watershed)
+
     if form.is_valid():
         form.save()
         return redirect('watershed:index')
+    # Watershed.objects.filter(watershedID=pk).delete()
     ctx = {}
     ctx["form"] = form
     ctx["watershed"] = watershed
@@ -60,12 +62,8 @@ def watershed_update(request, pk, template_name='watershed/watershed_form.html')
 
 
 def watershed_delete(request, pk, template_name='watershed/watershed_confirm_delete.html'):
-    watershed = get_object_or_404(Watershed, pk=pk)
-    if request.method == 'POST':
-        watershed.delete()
-        return redirect('watershed:index')
+    Watershed.objects.filter(watershedID=pk).delete()
+    return redirect('watershed:index')
     ctx = {}
-    ctx["object"] = watershed
-    ctx["watershed"] = watershed
     return render(request, template_name, ctx)
 
