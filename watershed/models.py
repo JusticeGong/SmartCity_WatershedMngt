@@ -4,20 +4,25 @@ from django.core.urlresolvers import reverse
 class Watershed(models.Model):
     watershedID = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
-    #isProtected = models.CharField(max_length=20)
+    isProtected = models.CharField(max_length=20)
     percentLand = models.CharField(max_length=20)
     supportsTourism = models.CharField(max_length=20)
     watershedDescription = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
-
-    def get_absolute_url(self):
-        return reverse('watershed:index')
 
     def __str__(self):
         return self.name
 
     def attrs(self):
         return [(field.name, field.value_to_string(self)) for field in Watershed._meta.fields]
+
+    def get_absolute_url(self):
+        return reverse('watershed:watershed_edit', kwargs={'pk': self.pk})
+
+    class Meta:
+        managed = False
+        db_table = 'Watershed'
+        app_label = 'watershed'
 
 class ffInfo(models.Model):
     florafaunaID = models.CharField(max_length=20)
