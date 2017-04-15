@@ -1,3 +1,6 @@
+========Next Step========
+1. Generate primary key ID automatically.
+
 ========Attention========
 1. No space for any primary ID.
 
