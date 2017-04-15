@@ -26,18 +26,17 @@
 
     <!--Button for Deleting Watershed-->
     <a href="{% url 'watershed:watershed_delete' %}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Delete Watershed</a>
-  
+
   <h3>Index View:</h3>
     {% if all_watershed %}
-    <ul>
+    <div class="list-group">
         {% for watershed in all_watershed %}
-        <li> <a href="{% url 'watershed:detail' watershed.id %}"> {{ watershed.watershedID }} </a> </li>
+        <a href="{% url 'watershed:detail' watershed.id %}" class="list-group-item">{{ watershed.name }}</a>
         {% endfor %}
-    </ul>
-    {% else %}
+    </div>
+     {% else %}
         <h2> You have no watersheds in your database </h2>
     {% endif %}
-
 </div>
 
 </body>

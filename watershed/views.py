@@ -31,8 +31,8 @@ def detail(request, watershed_id):
 
 # ========== Watershed CRUD =========
 
-def watershed_view(request, pk, template_name='watershed/detail.html'):
-    watershed= get_object_or_404(Watershed, pk=pk)
+def watershed_view(request, watershed_id, template_name='watershed/detail.html'):
+    watershed= get_object_or_404(Watershed, pk=watershed_id)
     ctx = {}
     ctx["watershed"] = watershed
     return render(request, template_name, ctx)
