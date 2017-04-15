@@ -7,10 +7,15 @@ from django.forms import ModelForm
 
 # ========== Forms =========
 
-class WatershedForm(ModelForm):
+class WatershedCreateForm(ModelForm):
     class Meta:
      model = Watershed
-     fields = ['name', 'percentLand', 'supportsTourism', 'watershedDescription', 'location']
+     fields = ['watershedID', 'name', 'isProtected', 'percentLand', 'supportsTourism', 'watershedDescription', 'location']
+
+class WatershedUpdateForm(ModelForm):
+    class Meta:
+        model = Watershed
+        fields = ['name', 'isProtected', 'percentLand', 'supportsTourism', 'watershedDescription', 'location']
 
 # ========== Home =========
 
@@ -38,7 +43,7 @@ def watershed_view(request, watershed_id, template_name='watershed/detail.html')
     return render(request, template_name, ctx)
 
 def watershed_create(request, template_name='watershed/watershed_form.html'):
-    form = WatershedForm(request.POST or None)
+    form = WatershedCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('watershed:index')
@@ -49,7 +54,7 @@ def watershed_create(request, template_name='watershed/watershed_form.html'):
 
 def watershed_update(request, pk, template_name='watershed/watershed_update.html'):
     watershed = get_object_or_404(Watershed, pk=pk)
-    form = WatershedForm(request.POST or None, instance=watershed)
+    form = WatershedUpdateForm(request.POST or None, instance=watershed)
 
     if form.is_valid():
         form.save()
