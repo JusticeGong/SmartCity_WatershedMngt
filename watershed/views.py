@@ -17,12 +17,12 @@ class WatershedForm(ModelForm):
 def index(request):
     all_watershed = Watershed.objects.all()
     context = {
-        'watershed': all_watershed
+        'all_watershed': all_watershed
     }
     return render(request, 'watershed/index.html', context)
 
-def detail(request, watershed_id):
-        watershed = get_object_or_404(Watershed, pk=watershed_id)
+def detail(request, pk):
+        watershed = get_object_or_404(Watershed, pk=pk)
         context = {
             'watershed': watershed
         }

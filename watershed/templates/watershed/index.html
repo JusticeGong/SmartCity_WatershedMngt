@@ -31,7 +31,7 @@
     {% if all_watershed %}
     <div class="list-group">
         {% for watershed in all_watershed %}
-        <a href="{% url 'watershed:detail' watershed.id %}" class="list-group-item">{{ watershed.name }}</a>
+        <a href="{% url 'watershed:detail' watershed.watershedID %}" class="list-group-item">{{ watershed.name }}</a>
         {% endfor %}
     </div>
      {% else %}

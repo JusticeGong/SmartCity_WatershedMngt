@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 class Watershed(models.Model):
-    watershedID = models.CharField(max_length=20)
+    watershedID = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=20)
     isProtected = models.CharField(max_length=20)
     percentLand = models.CharField(max_length=20)

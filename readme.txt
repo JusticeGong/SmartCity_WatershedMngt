@@ -1,3 +1,6 @@
+========Attention========
+1. No space for any primary ID.
+
 ========Name Rules========
 1. App Name:
     Use two words as app name, better use a verb + a noun.
