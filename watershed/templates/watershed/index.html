@@ -27,12 +27,25 @@
     {% if all_watershed %}
     <div class="list-group">
         {% for watershed in all_watershed %}
-        <a href="{% url 'watershed:detail' watershed.watershedID %}" class="list-group-item">{{ watershed.name }}</a>
-            <!--Button for Updating Watershed-->
-        <a href="{% url 'watershed:watershed_update' watershed.watershedID %}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Update Watershed</a>
+            <table style="width:100%">
+            <tr>
+                <th style="width: 60%">
+                    <a href="{% url 'watershed:detail' watershed.watershedID %}" class="list-group-item">{{ watershed.name }}</a>
+                </th>
+                <th style="width: 20%">
+                    <!--Button for Updating Watershed-->
+                    <a href="{% url 'watershed:watershed_update' watershed.watershedID %}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Update Watershed</a>
 
-                <!--Button for Deleting Watershed-->
-        <a href="{% url 'watershed:watershed_delete' watershed.watershedID %}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Delete Watershed</a>
+                </th>
+                <th style="width: 20%">
+                     <!--Button for Deleting Watershed-->
+                     <a href="{% url 'watershed:watershed_delete' watershed.watershedID %}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Delete Watershed</a>
+
+                </th>
+            </tr>
+
+
+              </table>
         {% endfor %}
     </div>
      {% else %}
