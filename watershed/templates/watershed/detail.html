@@ -15,16 +15,19 @@
 </head>
 
 <body>
+
     <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
         <p>Detail view</p>
     </div>
-    <div class="row">
-        
-    <!--Detail view-->
     <div class="container-fluid">
+      
+    
+    <div class="row">    
+    <!--Detail view-->
+    
         <div class="page-header text-center">
-          <h1>{{ watershed.name }}<small></small></h1>
+          <h1>{{ watershed.name }}</h1>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -40,32 +43,14 @@
                         {% endfor %}
                 </table>
             </div>
-            <ul>
-                {% for florafauna in watershed.florafauna_set.all %}
-                <li> {{ florafauna.name }} </li>
-                {% endfor %}
-            </ul>
         </div>
 
-        <!--Image-->
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-            <img src="{{ watershed.watershed_logo }}" height="200px" width="100%">     
-        </div>
-
-        <!--Map-->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
-<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
-        </div>
-    </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="container-fluid">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div role="tabpanel">
+         <!--Other Info-->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+           <div role="tabpanel">
 
                   <!-- Nav tabs -->
-                  <ul class="nav nav-tabs nav-justified" role="tablist">
+                  <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active">
                           <a href="#features" aria-controls="Features" role="tab" data-toggle="tab">Features</a>
                       </li>
@@ -79,13 +64,28 @@
               
                   <!-- Tab panes -->
                   <div class="tab-content">
-                      <div role="tabpanel" class="tab-pane active" id="features">alist of features.../div>
-                      <div role="tabpanel" class="tab-pane" id="maintenance">list of maintenance</div>
-                      <div role="tabpanel" class="tab-pane" id="floraAndfauna">list of flora and fauna</div>
+                      <div role="tabpanel" class="tab-pane fade active" id="features">list of features</div>
+                      <div role="tabpanel" class="tab-pane fade" id="maintenance">list of maintenance</div>
+                      <div role="tabpanel" class="tab-pane fade" id="floraAndfauna">list of flora and fauna</div>
                   </div>
-              </div>
-            </div>
+            </div>   
         </div>
+
+        <!--Image-
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <img src="{{ watershed.watershed_logo }}" height="200px" width="100%">     
+        </div>-->
+
+        <!--Map-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
+        </div>
+    
+    
+    <br>
+    <br>
+    <br>
+
     </div>
     <br>
     <br>
