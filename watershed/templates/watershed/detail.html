@@ -52,13 +52,30 @@
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active">
-                          <a href="#features" aria-controls="Features" role="tab" data-toggle="tab">Features</a>
+                          <a href="#features" aria-controls="Manmade Features" role="tab" data-toggle="tab">Manmade Features</a>
+                          {% if manmadefeature %}
+                                {% for feature in manmadefeature %}
+                                    <a href="{% url 'watershed:detail_manmadefeature' feature.featureID %}" class="h1">{{ feature.name }}</a>
+                                {% endfor %}
+                          {% else %}
+                                <h1> No Manmade Feature record for this watershed </h1>
+                          {% endif %}
+                      </li>
+                      <li role="presentation">
+                          <a href="#naturalfeatures" aria-controls="Natural Features" role="tab" data-toggle="tab">Natural Features</a>
+                          {% if naturalfeature %}
+                                {% for feature in naturalfeature %}
+                                    <a href="{% url 'watershed:detail_naturalfeature' feature.featureID %}" class="h1">{{ feature.name }}</a>
+                                {% endfor %}
+                          {% else %}
+                                <h1> No Natural Feature record for this watershed </h1>
+                          {% endif %}
                       </li>
                       <li role="presentation">
                           <a href="#maintenance" aria-controls="maintenance" role="tab" data-toggle="tab">Maintenance</a>
                           {% if maintenance %}
                                 {% for item in maintenance %}
-                                    <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h4">{{ item.issue }}</a>
+                                    <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h1">{{ item.issue }}</a>
                                 {% endfor %}
                           {% else %}
                                 <h1> No Maintenance record for this watershed </h1>
@@ -66,6 +83,23 @@
                       </li>
                         <li role="presentation">
                           <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">Flora & Fauna</a>
+                          {% if ffinfo %}
+                                {% for info in ffinfo %}
+                                    <a href="{% url 'watershed:detail_ffinfo' info.ffInfoID %}" class="h1">{{ info.description }}</a>
+                                {% endfor %}
+                          {% else %}
+                                <h1> No Flora Fauna information record for this watershed </h1>
+                          {% endif %}
+                      </li>
+                      <li role="presentation">
+                          <a href="#observation" aria-controls="observation" role="tab" data-toggle="tab">Observation</a>
+                          {% if observation %}
+                                {% for obs in observation %}
+                                    <a href="{% url 'watershed:detail_observation' obs.observationID %}" class="h1">{{ obs.description }}</a>
+                                {% endfor %}
+                          {% else %}
+                                <h1> No observation record for this watershed </h1>
+                          {% endif %}
                       </li>
                   </ul>
               

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Maintenance</title>
+    <title>Add Observation</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -11,12 +11,12 @@
 <body>
     <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
-        <p>List of Maintenance</p>
+        <p>List of Observations</p>
     </div>
 
     <div class="container-fluid">
        <form action="" method="POST" role="form">
-              <legend>Enter the Maintenance Data:</legend>
+              <legend>Enter the Observation Data:</legend>
                 {% csrf_token %}
                 {% for field in form %}
                 <div class="form-group">

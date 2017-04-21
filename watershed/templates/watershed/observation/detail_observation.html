@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail observation</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Watershed Application</h1>
+        <p>Observation view</p>
+    </div>
+    <div class="container-fluid">
+
+
+    <div class="row">
+    <!--Detail view-->
+
+        <div class="page-header text-center">
+          <h1>{{ observation.name }}</h1>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="panel panel-primary">
+            <!-- Default panel contents -->
+                <div class="panel-heading">Manmade Feature Information</div>
+                <table class="table table-striped table-condensed">
+                        {% for name, value in observation.attrs %}
+                         <tr>
+                            <td class="text-right"><strong>{{name}}</strong></td>
+                            <td>{{value}}</td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
