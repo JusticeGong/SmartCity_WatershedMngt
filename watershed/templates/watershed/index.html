@@ -32,10 +32,10 @@
             
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:watershed_update' watershed.watershedID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit watershed</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:watershed_delete' watershed.watershedID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
+                    <span class="glyphicon glyphicon-trash"> Delete watershed</span>
                 </a>
             </span>
                 
@@ -45,6 +45,35 @@
     </div>
      {% else %}
         <h2> You have no watersheds in your database </h2>
+    {% endif %}
+</div>
+
+<div class="container-fluid">
+    <!--Button for Adding Watershed-->
+    <a href="{% url 'watershed:florafauna_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add FloraFauna</a>
+
+  <h3>FloraFauna:</h3>
+    {% if all_florafauna %}
+    <div class="list-group">
+        {% for flora in all_florafauna %}
+        <div class="list-group-item">
+            <a href="{% url 'watershed:detail_florafauna' flora.florafaunaID %}" class="h4">{{ flora.name }}</a>
+
+            <span class="pull-right">
+                <a class="btn btn-xs btn-warning" href="{% url 'watershed:florafauna_update' flora.florafaunaID %}">
+                    <span class="glyphicon glyphicon-pencil"> Edit florafauna</span>
+                </a>
+                <a class="btn btn-xs btn-danger" href="{% url 'watershed:florafauna_delete' flora.florafaunaID %}">
+                    <span class="glyphicon glyphicon-trash"> Delete florafauna</span>
+                </a>
+            </span>
+
+
+        </div>
+        {% endfor %}
+    </div>
+     {% else %}
+        <h2> You have no florafaunas in your database </h2>
     {% endif %}
 </div>
 

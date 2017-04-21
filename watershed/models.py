@@ -35,12 +35,23 @@ class ffInfo(models.Model):
         return self.description
 
 class FloraFauna(models.Model):
-    florafaunaID = models.CharField(max_length=20)
+    florafaunaID = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=20)
     species = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+    def attrs(self):
+        return [(field.name, field.value_to_string(self)) for field in FloraFauna._meta.fields]
+
+    def get_absolute_url(self):
+        return reverse('watershed:florafauna_edit', kwargs={'pk': self.pk})
+
+    class Meta:
+        managed = False
+        db_table = 'FloraFauna'
+        app_label = 'watershed'
 
 class Maintenance(models.Model):
     maintenanceID = models.CharField(max_length=20)
