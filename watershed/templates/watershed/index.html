@@ -55,15 +55,15 @@
   <h3>FloraFauna:</h3>
     {% if all_florafauna %}
     <div class="list-group">
-        {% for flora in all_florafauna %}
+        {% for florafauna in all_florafauna %}
         <div class="list-group-item">
-            <a href="{% url 'watershed:detail_florafauna' flora.florafaunaID %}" class="h4">{{ flora.name }}</a>
+            <a href="{% url 'watershed:detail_florafauna' florafauna.florafaunaID %}" class="h4">{{ florafauna.name }}</a>
 
             <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:florafauna_update' flora.florafaunaID %}">
+                <a class="btn btn-xs btn-warning" href="{% url 'watershed:florafauna_update' florafauna.florafaunaID %}">
                     <span class="glyphicon glyphicon-pencil"> Edit florafauna</span>
                 </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:florafauna_delete' flora.florafaunaID %}">
+                <a class="btn btn-xs btn-danger" href="{% url 'watershed:florafauna_delete' florafauna.florafaunaID %}">
                     <span class="glyphicon glyphicon-trash"> Delete florafauna</span>
                 </a>
             </span>
@@ -76,6 +76,38 @@
         <h2> You have no florafaunas in your database </h2>
     {% endif %}
 </div>
+
+
+
+<div class="container-fluid">
+    <!--Button for Adding Watershed-->
+    <a href="{% url 'watershed:maintenance_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Maintenance</a>
+
+    <h3>Maintenance:</h3>
+    {% if all_maintenance%}
+    <div class="list-group">
+        {% for item in all_maintenance %}
+        <div class="list-group-item">
+            <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h4">{{ item.issue }}</a>
+
+            <span class="pull-right">
+                <a class="btn btn-xs btn-warning" href="{% url 'watershed:maintenance_update' item.maintenanceID %}">
+                    <span class="glyphicon glyphicon-pencil"> Edit Maintenance</span>
+                </a>
+                <a class="btn btn-xs btn-danger" href="{% url 'watershed:maintenance_delete' item.maintenanceID %}">
+                    <span class="glyphicon glyphicon-trash"> Delete Maintenance</span>
+                </a>
+            </span>
+
+
+        </div>
+        {% endfor %}
+    </div>
+     {% else %}
+        <h2> You have no Maintenance in your database </h2>
+    {% endif %}
+</div>
+
 
 
 </body>

@@ -56,6 +56,13 @@
                       </li>
                       <li role="presentation">
                           <a href="#maintenance" aria-controls="maintenance" role="tab" data-toggle="tab">Maintenance</a>
+                          {% if maintenance %}
+                                {% for item in maintenance %}
+                                    <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h4">{{ item.issue }}</a>
+                                {% endfor %}
+                          {% else %}
+                                <h1> No Maintenance record for this watershed </h1>
+                          {% endif %}
                       </li>
                         <li role="presentation">
                           <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">Flora & Fauna</a>
@@ -65,7 +72,15 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                       <div role="tabpanel" class="tab-pane fade active" id="features">list of features</div>
-                      <div role="tabpanel" class="tab-pane fade" id="maintenance">list of maintenance</div>
+                      <div role="tabpanel" class="tab-pane fade" id="maintenance">
+                          {% for name, value in maintenance.attrs %}
+                              <tr>
+                                <td class="text-right"><strong>{{name}}</strong></td> 
+                                <td>{{value}}</td>
+                            </tr>
+                        {% endfor %}
+
+                      </div>
                       <div role="tabpanel" class="tab-pane fade" id="floraAndfauna">list of flora and fauna</div>
                   </div>
             </div>   

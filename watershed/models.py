@@ -46,7 +46,7 @@ class FloraFauna(models.Model):
         return [(field.name, field.value_to_string(self)) for field in FloraFauna._meta.fields]
 
     def get_absolute_url(self):
-        return reverse('watershed:florafauna_edit', kwargs={'pk': self.pk})
+        return reverse('watershed:florafauna_edit', kwargs={'florafauna_ID': self.pk})
 
     class Meta:
         managed = False
@@ -54,8 +54,8 @@ class FloraFauna(models.Model):
         app_label = 'watershed'
 
 class Maintenance(models.Model):
-    maintenanceID = models.CharField(max_length=20)
-    watershedID = models.CharField(max_length=20)
+    maintenanceID = models.CharField(max_length=20, primary_key=True)
+    watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID')
     date = models.CharField(max_length=20)
     issue = models.CharField(max_length=255)
     cost = models.CharField(max_length=255)
@@ -67,6 +67,14 @@ class Maintenance(models.Model):
 
     def attrs(self):
         return [(field.name, field.value_to_string(self)) for field in Maintenance._meta.fields]
+
+    def get_absolute_url(self):
+        return reverse('watershed:maintenance_edit', kwargs={'maintenance_ID': self.pk})
+
+    class Meta:
+        managed = False
+        db_table = 'Maintenance'
+        app_label = 'watershed'
 
 class ManmadeFeature(models.Model):
     featureID = models.CharField(max_length=20)
