@@ -216,6 +216,6 @@ pip-log.txt
 .mr.developer.cfg
 
 .idea/workspace.xml
-.idea/
+.idea/*
 .idea/misc.xml
 *.iml
