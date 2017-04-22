@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
             <div class="panel panel-primary">
             <!-- Default panel contents -->
-                <div class="panel-heading">Watershed Information</div>
+                <div class="panel-heading text-center">Watershed Information</div>
                 <table class="table table-striped table-condensed">
                         {% for name, value in watershed.attrs %}
                          <tr>
@@ -52,70 +52,160 @@
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active">
-                          <a href="#features" aria-controls="Manmade Features" role="tab" data-toggle="tab">Manmade Features</a>
-                          {% if manmadefeature %}
-                                {% for feature in manmadefeature %}
-                                    <a href="{% url 'watershed:detail_manmadefeature' feature.featureID %}" class="h1">{{ feature.name }}</a>
-                                {% endfor %}
-                          {% else %}
-                                <h1> No Manmade Feature record for this watershed </h1>
-                          {% endif %}
-                      </li>
-                      <li role="presentation">
-                          <a href="#naturalfeatures" aria-controls="Natural Features" role="tab" data-toggle="tab">Natural Features</a>
-                          {% if naturalfeature %}
-                                {% for feature in naturalfeature %}
-                                    <a href="{% url 'watershed:detail_naturalfeature' feature.featureID %}" class="h1">{{ feature.name }}</a>
-                                {% endfor %}
-                          {% else %}
-                                <h1> No Natural Feature record for this watershed </h1>
-                          {% endif %}
+                          <a href="#features" aria-controls="Features" role="tab" data-toggle="tab">Features</a>
                       </li>
                       <li role="presentation">
                           <a href="#maintenance" aria-controls="maintenance" role="tab" data-toggle="tab">Maintenance</a>
-                          {% if maintenance %}
-                                {% for item in maintenance %}
-                                    <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h1">{{ item.issue }}</a>
-                                {% endfor %}
-                          {% else %}
-                                <h1> No Maintenance record for this watershed </h1>
-                          {% endif %}
                       </li>
                         <li role="presentation">
-                          <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">Flora & Fauna</a>
-                          {% if ffinfo %}
-                                {% for info in ffinfo %}
-                                    <a href="{% url 'watershed:detail_ffinfo' info.ffInfoID %}" class="h1">{{ info.description }}</a>
-                                {% endfor %}
-                          {% else %}
-                                <h1> No Flora Fauna information record for this watershed </h1>
-                          {% endif %}
+                          <a href="#Observation" aria-controls="Observation" role="tab" data-toggle="tab">Observation</a>
                       </li>
                       <li role="presentation">
-                          <a href="#observation" aria-controls="observation" role="tab" data-toggle="tab">Observation</a>
-                          {% if observation %}
-                                {% for obs in observation %}
-                                    <a href="{% url 'watershed:detail_observation' obs.observationID %}" class="h1">{{ obs.description }}</a>
-                                {% endfor %}
-                          {% else %}
-                                <h1> No observation record for this watershed </h1>
-                          {% endif %}
+                          <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">F - F</a>
                       </li>
                   </ul>
               
                   <!-- Tab panes -->
                   <div class="tab-content">
-                      <div role="tabpanel" class="tab-pane fade active" id="features">list of features</div>
-                      <div role="tabpanel" class="tab-pane fade" id="maintenance">
-                          {% for name, value in maintenance.attrs %}
-                              <tr>
-                                <td class="text-right"><strong>{{name}}</strong></td> 
-                                <td>{{value}}</td>
-                            </tr>
-                        {% endfor %}
+                      <!-- features -->
+                      <div role="tabpanel" class="tab-pane fade active" id="features">
+                        {% if manMadeFeatures  or naturalFeatures %}
+                          <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Type</th>
+                                  <th> More info</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% if manMadeFeatures %}
+                                  {% for item in manMadeFeatures %}
+                                    <tr>
+                                      <td>{{ item.name }}</td>
+                                      <td>Man Made</td>
+                                      <td>
+                                        <a href="{% url 'watershed:detail_manmadefeature' item.featureID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
 
+                                      </td>
+                                    </tr>
+                                  {% endfor %}
+                                {% else %}
+                                  {% if naturalFeatures %}
+                                    {% for item in naturalFeatures %}
+                                    <tr>
+                                      <td>{{ item.name }}</td>
+                                      <td>Natural</td>
+                                      <td>
+                                        <a href="{% url 'watershed:detail_manmadefeature' item.featureID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  {% endif %}
+                                {% endif %}
+                              </tbody>
+                          </table>
+                        {% else %}
+                          <p class="lead"> No features  for this watershed </p>
+                        {% endif %}
+                      
                       </div>
-                      <div role="tabpanel" class="tab-pane fade" id="floraAndfauna">list of flora and fauna</div>
+
+                      <!-- Maintenace Info -->
+                      <div role="tabpanel" class="tab-pane fade" id="maintenance">
+                          {% if maintenance %}
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Issue</th>
+                                  <th>Cost</th>
+                                  <th>Status</th>
+                                  <th> More info</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for item in maintenance %}
+                                    <tr>
+                                      <td>{{ item.issue }}</td>
+                                      <td>{{ item.cost }}</td>
+                                      <td>{{ item.status }}</td>
+                                      <td>
+                                        <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+
+                                      </td>
+                                    </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          {% else %}
+                                <p class="lead"> No Maintenance record for this watershed </p>
+                          {% endif %}
+                      </div>
+
+                      <!--Observations -->
+                      <div role="tabpanel" class="tab-pane fade" id="Observation">
+                        {% if observationV %}
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>test type</th>
+                                  <th>Date</th>
+                                  <th>sublocation</th>
+                                  <th> More info</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for item in observationV %}
+                                    <tr>
+                                      <td>{{ item.testType }}</td>
+                                      <td>{{ item.date }}</td>
+                                      <td>{{ item.sublocation }}</td>
+                                      <td>
+                                        <a href="{% url 'watershed:detail_observation' item.observationID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+
+                                      </td>
+                                    </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        {% else %}
+                                <p class="lead"> No Observations record for this watershed </p>
+                        {% endif %}
+                      </div>
+
+                      <!--Flora and Fauna -->
+                      <div role="tabpanel" class="tab-pane fade" id="floraAndfauna">
+                        {% if FloraAndFauna %}
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Native</th>
+                                  <th>Description</th>
+                                  <th>URL</th>
+                                  <th> More info</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for item in FloraAndFauna %}
+                                    <tr>
+                                      <td>{{ item.isNative }}</td>
+                                      <td>{{ item.description }}</td>
+                                      <td>{{ item.photoUrl }}</td>
+                                      <td>
+                                        <a href="{% url 'watershed:detail_ffinfo' item.ffInfoID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+
+                                      </td>
+                                    </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        {% else %}
+                                <p class="lead"> No Flora or Fauna record for this watershed </p>
+                        {% endif %}
+                      </div>
+
                   </div>
             </div>   
         </div>

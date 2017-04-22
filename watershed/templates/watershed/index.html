@@ -32,10 +32,10 @@
             
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:watershed_update' watershed.watershedID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit watershed</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:watershed_delete' watershed.watershedID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete watershed</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
                 
@@ -50,7 +50,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding FloraFauna-->
-    <a href="{% url 'watershed:florafauna_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add FloraFauna</a>
+    <a href="{% url 'watershed:florafauna_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  FloraFauna</a>
 
   <h3>FloraFauna:</h3>
     {% if all_florafauna %}
@@ -61,10 +61,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:florafauna_update' florafauna.florafaunaID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit florafauna</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:florafauna_delete' florafauna.florafaunaID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete florafauna</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
@@ -81,7 +81,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding Maintenance-->
-    <a href="{% url 'watershed:maintenance_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Maintenance</a>
+    <a href="{% url 'watershed:maintenance_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Maintenance</a>
 
     <h3>Maintenance:</h3>
     {% if all_maintenance%}
@@ -92,10 +92,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:maintenance_update' item.maintenanceID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit Maintenance</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:maintenance_delete' item.maintenanceID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete Maintenance</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
@@ -111,7 +111,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding ManmadeFeature-->
-    <a href="{% url 'watershed:manmadefeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Manmade Feature</a>
+    <a href="{% url 'watershed:manmadefeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Manmade Feature</a>
 
     <h3>Manmade Feature:</h3>
     {% if all_manmadefeature%}
@@ -122,10 +122,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:manmadefeature_update' feature.featureID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit Manmade Feature</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:manmadefeature_delete' feature.featureID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete Manmade Feature</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
@@ -141,7 +141,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding NaturalFeature-->
-    <a href="{% url 'watershed:naturalfeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Natural Feature</a>
+    <a href="{% url 'watershed:naturalfeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Natural Feature</a>
 
     <h3>Natural Feature:</h3>
     {% if all_naturalfeature%}
@@ -152,10 +152,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:naturalfeature_update' natural.featureID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit Natural Feature</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:naturalfeature_delete' natural.featureID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete Natural Feature</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
@@ -171,7 +171,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding ffInfo-->
-    <a href="{% url 'watershed:ffinfo_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Flora Fauna Info</a>
+    <a href="{% url 'watershed:ffinfo_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Flora Fauna Info</a>
 
     <h3>Flora Fauna Information:</h3>
     {% if all_ffinfo%}
@@ -182,10 +182,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:ffinfo_update' info.ffInfoID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit Flora Fauna Information</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:ffinfo_delete' info.ffInfoID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete Flora Fauna Information</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
@@ -201,7 +201,7 @@
 
 <div class="container-fluid">
     <!--Button for Adding Observation-->
-    <a href="{% url 'watershed:observation_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Observation</a>
+    <a href="{% url 'watershed:observation_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Observation</a>
 
     <h3>Observation Information:</h3>
     {% if all_observation %}
@@ -212,10 +212,10 @@
 
             <span class="pull-right">
                 <a class="btn btn-xs btn-warning" href="{% url 'watershed:observation_update' info.observationID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit Observation Information</span>
+                    <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
                 <a class="btn btn-xs btn-danger" href="{% url 'watershed:observation_delete' info.observationID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete Observation Information</span>
+                    <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
 
