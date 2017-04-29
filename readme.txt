@@ -44,3 +44,9 @@ Password: watershed
 ========MySQL Account========
 Username: smart_city
 Password: smartcity2
+
+
+========New MySQL Server for Integrate========
+mysql -h smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com -P 3306 -u bpasmartcity1 -p
+
+The password is pass1234

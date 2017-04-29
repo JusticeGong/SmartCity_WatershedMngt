@@ -6,6 +6,12 @@ from django.forms import ModelForm
 from django.core.exceptions import ObjectDoesNotExist
 from watershed.forms import *
 
+# #Generate GeoRSS
+# def GeoRSS
+
+
+
+
 
 
 # ======== Generic CRUD ======

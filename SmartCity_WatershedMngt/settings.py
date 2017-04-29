@@ -75,18 +75,31 @@ WSGI_APPLICATION = 'SmartCity_WatershedMngt.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Watershed',
+#         'USER': 'smart_city',
+#         'PASSWORD': 'smartcity2',
+#         'HOST':'watershed.cand6uyaamhk.us-east-1.rds.amazonaws.com',
+#         'PORT':'8000',
+#     }
+#         #os.path.join(BASE_DIR, 'db.sqlite3'),
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Watershed',
-        'USER': 'smart_city',
-        'PASSWORD': 'smartcity2',
-        'HOST':'watershed.cand6uyaamhk.us-east-1.rds.amazonaws.com',
-        'PORT':'8000',
+        'USER': 'bpasmartcity1',
+        'PASSWORD': 'pass1234',
+        'HOST':'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
+        'PORT':'3306',
     }
         #os.path.join(BASE_DIR, 'db.sqlite3'),
 }
+
 
 '''
 DATABASES = {
