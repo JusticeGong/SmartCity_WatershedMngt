@@ -151,6 +151,7 @@ class Observation(models.Model):
 
 
 class WatershedPipe(models.Model):
+    watershedID = models.CharField(max_length=20, primary_key=True, verbose_name='wID')
     pipeID = models.CharField(max_length=20, verbose_name='pID')
     class Meta:
         db_table = 'WatershedPipe'
