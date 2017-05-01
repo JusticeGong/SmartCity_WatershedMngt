@@ -118,6 +118,10 @@ def generic_detail(request, pk, type):
             FloraAndFauna = ffInfo.objects.all().filter(watershedID=pk)
         except ObjectDoesNotExist:
             FloraAndFauna = None
+        try:
+            WPConnection = WatershedPipe.objects.using('Integration').filter(watershedID=pk)
+        except ObjectDoesNotExist:
+            WPConnection = None
 
 
         ctx['watershed']=watershed
@@ -126,6 +130,7 @@ def generic_detail(request, pk, type):
         ctx['naturalFeatures']=naturalFeatures
         ctx['observationV']=observationV
         ctx['FloraAndFauna']=FloraAndFauna
+        ctx['WPConnection'] = WPConnection
         template_name='watershed/detail.html'
 
     elif type == 'floraFauna':
@@ -193,6 +198,7 @@ def index(request):
     all_naturalfeature = NaturalFeature.objects.all()
     all_ffinfo = ffInfo.objects.all()
     all_observation = Observation.objects.all()
+
     context = {
         'all_watershed': all_watershed,
         'all_florafauna': all_florafauna,

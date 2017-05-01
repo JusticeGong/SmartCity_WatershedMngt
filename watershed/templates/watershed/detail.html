@@ -63,6 +63,9 @@
                       <li role="presentation">
                           <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">F - F</a>
                       </li>
+                      <li role="presentation">
+                          <a href="#WatershedPipe" aria-controls="WatershedPipe" role="tab" data-toggle="tab">Pipe</a>
+                      </li>
                   </ul>
               
                   <!-- Tab panes -->
@@ -184,7 +187,7 @@
                                   <th>Description</th>
                                   <th>URL</th>
                                   <th> More info</th>
-                                  
+
                                 </tr>
                               </thead>
                               <tbody>
@@ -205,6 +208,30 @@
                                 <p class="lead"> No Flora or Fauna record for this watershed </p>
                         {% endif %}
                       </div>
+
+
+                      <!--Watershed_Pipe_Connection -->
+                      <div role="tabpanel" class="tab-pane fade" id="WatershedPipe">
+                        {% if WPConnection %}
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th>WatershedID</th>
+                                  <th>PipeID</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for item in WPConnection %}
+                                    <tr>
+                                    </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                        {% else %}
+                                <p class="lead"> No pipe record for this watershed </p>
+                        {% endif %}
+                      </div>
+
 
                   </div>
             </div>   

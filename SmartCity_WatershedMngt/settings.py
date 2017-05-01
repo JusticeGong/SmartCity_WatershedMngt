@@ -96,6 +96,14 @@ DATABASES = {
         'PASSWORD': 'pass1234',
         'HOST':'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
         'PORT':'3306',
+    },
+    'Integration': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Integration',
+        'USER': 'bpasmartcity1',
+        'PASSWORD': 'pass1234',
+        'HOST': 'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
+        'PORT': '3306',
     }
         #os.path.join(BASE_DIR, 'db.sqlite3'),
 }

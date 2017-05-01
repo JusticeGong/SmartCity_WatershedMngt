@@ -150,4 +150,11 @@ class Observation(models.Model):
         app_label = 'watershed'
 
 
+class WatershedPipe(models.Model):
+    pipeID = models.CharField(max_length=20, verbose_name='pID')
+    class Meta:
+        db_table = 'WatershedPipe'
+        unique_together = ("watershedID", "pipeID")
+
+
 
