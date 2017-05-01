@@ -4,9 +4,9 @@ import _mysql
 
 db=_mysql.connect(host="smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com", user="bpasmartcity1", passwd="pass1234", db="Watershed", port =3306)
 
-c=
-
-c.execute("""SELECT * FROM Watershed""")
+#
+#
+# c.execute("""SELECT * FROM Watershed""")
 
 # root = ET.Element('background')
 # starttime = ET.SubElement(root, 'starttime')

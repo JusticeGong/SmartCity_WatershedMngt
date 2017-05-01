@@ -105,7 +105,6 @@ DATABASES = {
         'HOST': 'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
     }
-        #os.path.join(BASE_DIR, 'db.sqlite3'),
 }
 
 
