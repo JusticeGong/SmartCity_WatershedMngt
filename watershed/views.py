@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.forms import ModelForm
 from django.core.exceptions import ObjectDoesNotExist
 from watershed.forms import *
+from django.http import Http404
 
 # #Generate GeoRSS
 # def GeoRSS
@@ -81,8 +82,8 @@ def generic_update(request, pk, type):
         form = ffInfoForm(request.POST or None, instance=ffInfoInstance)
 
     elif type == 'WatershedPipeConnection':
-        wpconnection=get_object_or_404(WatershedPipe, pk=pk)
-        form = WatershedPipeForm(request.POST or None, instance=wpconnection)
+        wpconnection =get_object_or_404(WatershedPipe, connectionID=pk)
+        form = WatershedPipeForm(request.POST or None, instance= wpconnection)
 
     else:
         form = None
@@ -126,10 +127,9 @@ def generic_detail(request, pk, type):
         except ObjectDoesNotExist:
             FloraAndFauna = None
         try:
-            WPConnection = WatershedPipe.objects.using('Integration').filter(watershedID=pk)
+            WPConnection = WatershedPipe.objects.filter(watershedID=pk)
         except ObjectDoesNotExist:
             WPConnection = None
-
 
         ctx['watershed']=watershed
         ctx['maintenance']=maintenance
@@ -165,8 +165,8 @@ def generic_detail(request, pk, type):
         ctx['entity']=ffInfoV
 
     elif type == 'WatershedPipeConnection':
-        wpc = get_object_or_404(WatershedPipe, pk=pk)
-        ctx['entity'] = wpc
+        wpc=get_object_or_404(WatershedPipe, pk=pk)
+        ctx['entity']=wpc
 
     else:
         form = None
@@ -191,7 +191,7 @@ def generic_delete(request, pk, type):
     elif type == 'ffinfo':
         ffInfo.objects.filter(ffInfoID=pk).delete()
     elif type == 'WatershedPipeConnection':
-        WatershedPipe.objects.using('Integration').filter(watershedID=pk).delete()
+        WatershedPipe.objects.filter(connectionID=pk).delete()
     else:
         pass
 
@@ -211,7 +211,7 @@ def index(request):
     all_naturalfeature = NaturalFeature.objects.all()
     all_ffinfo = ffInfo.objects.all()
     all_observation = Observation.objects.all()
-    all_watershedpipe = WatershedPipe.objects.using('Integration').all()
+    all_watershedpipe = WatershedPipe.objects.all()
 
     context = {
         'all_watershed': all_watershed,
@@ -221,7 +221,7 @@ def index(request):
         'all_naturalfeature': all_naturalfeature,
         'all_ffinfo': all_ffinfo,
         'all_observation': all_observation,
-        'all_watershedpipe': all_watershedpipe
+        'all_watershedpipe': all_watershedpipe,
     }
     return render(request, 'watershed/index.html', context)
 

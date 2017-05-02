@@ -93,7 +93,6 @@ class ObservationForm(forms.ModelForm):
 	description = forms.CharField(max_length=255, label="Description:", widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}))
 	testType = forms.CharField(max_length=20, label="Test Type:", widget=forms.TextInput(attrs={'class':'form-control'}))
 
-
 	class Meta:
 		model = Observation
 		exclude=[]
@@ -102,8 +101,8 @@ class ObservationForm(forms.ModelForm):
 class WatershedPipeForm(forms.ModelForm):
 	connectionID = forms.CharField(max_length=20, label="ID:", widget=forms.TextInput(attrs={'class':'form-control'}))
 	watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
-	pipeID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Pipe.objects.using('stormwater').all(), widget=forms.Select(attrs={'class':'form-control'}))
+	pipeID = forms.ModelChoiceField(label='Relation to Pipe', queryset=Pipe.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
 
 	class Meta:
-		model = Observation
+		model = WatershedPipe
 		exclude=[]

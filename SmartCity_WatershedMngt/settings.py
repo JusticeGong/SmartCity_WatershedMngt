@@ -114,7 +114,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+DATABASE_ROUTERS = ['watershed.routers.IntegrationDatabaseRouter']
 
 '''
 DATABASES = {

@@ -156,11 +156,37 @@ class WatershedPipe(models.Model):
     connectionID = models.CharField(max_length=20, primary_key=True, verbose_name='cID')
     watershedID = models.CharField(max_length=20, verbose_name='wID')
     pipeID = models.CharField(max_length=20, verbose_name='pID')
+
+    def __str__(self):
+        return self.description
+
+    def attrs(self):
+        return [(field.verbose_name, field.value_to_string(self)) for field in WatershedPipe._meta.fields]
+
+    def get_absolute_url(self):
+        return reverse('watershed:wpconnection_edit', kwargs={'connection_ID': self.pk})
+
     class Meta:
         managed = False
         db_table = 'WatershedPipe'
-        app_label = 'watershed'
+        app_label = 'integrate'
 
 
+# class Pipe(models.Model):
+#     pipeID = models.CharField(max_length=20, primary_key=True, verbose_name='cID')
+#     capacity = models.CharField(max_length=20, verbose_name='Capacity')
+#     sourceLocation = models.CharField(max_length=20, verbose_name='SL')
+#     endLocation = models.CharField(max_length=20, verbose_name='EL')
+#     sensorID = models.CharField(max_length=20, verbose_name='SID')
 
+class Pipe(models.Model):
+    pipeid = models.CharField(db_column='pipeId', primary_key=True)  # Field name made lowercase.
+    capacity = models.FloatField(db_column='pipeId', blank=True, null=True)
+    sourcelocation = models.CharField(max_length=20, verbose_name='wID')
+    endlocation = models.CharField(max_length=20, verbose_name='wID')
+    sensorid = models.CharField(max_length=20, verbose_name='wID')
+    class Meta:
+        managed = False
+        db_table = 'Pipe'
+        app_label = 'stormwater'
 

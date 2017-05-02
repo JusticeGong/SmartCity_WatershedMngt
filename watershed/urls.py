@@ -23,12 +23,12 @@ urlpatterns = [
     url(r'^naturalfeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Natural Feature'}, name='naturalfeature_update'),
     url(r'^manmadefeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Manmade Feature'}, name='manmadefeature_update'),
     url(r'^(?P<pk>.*)/update$', views.generic_update, {'type':'Watershed'}, name='watershed_update'),
-    url(r'^wpconnection/(?P<pk>.*)/update$', views.generic_update, {'type': 'WatershedPipeConnection'}, name='wpconnection_update'),
+    url(r'^wpconnection/(?P<pk>.*)/update$', views.generic_update, {'type':'WatershedPipeConnection'}, name='wpconnection_update'),
 
     #URL for Generic Delete
     url(r'^manmadefeature/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Manmade Feature'}, name='manmadefeature_delete'),
     url(r'^naturalfeature/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Natural Feature'}, name='naturalfeature_delete'),
-    url(r'^nffinfo/(?P<pk>.*)/delete$', views.generic_delete, {'type':'ffinfo'}, name='ffinfo_delete'),
+    url(r'^ffinfo/(?P<pk>.*)/delete$', views.generic_delete, {'type':'ffinfo'}, name='ffinfo_delete'),
     url(r'^observation/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Observation'}, name='observation_delete'),
     url(r'^maintenance/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Maintenance'}, name='maintenance_delete'),
     url(r'^florafauna/(?P<pk>.*)/delete$', views.generic_delete, {'type':'floraFauna'}, name='florafauna_delete'),

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Watershed-Pipe Connection information</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Watershed Application</h1>
+        <p>List of Watershed-Pipe Connection Information</p>
+    </div>
+
+    <div class="container-fluid">
+       <form action="" method="POST" role="form">
+              <legend>Enter the Watershed-Pipe Connection Information Data:</legend>
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                   {{ field.label_tag }}
+                   <input id="{{ field.auto_id }}" maxlength="20" class="form-control" name="{{ field.name }}"  type="text" required>
+
+                </div>
+                {% endfor %}
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+</body>
+</html>
