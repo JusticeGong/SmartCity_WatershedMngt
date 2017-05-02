@@ -112,6 +112,8 @@ class NaturalFeature(models.Model):
     watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='Watershed ID')
     name = models.CharField(max_length=255, verbose_name='Name')
     description = models.CharField(max_length=255, verbose_name='Description')
+    latitude = models.CharField(max_length=255, verbose_name='Latitude')
+    longitude = models.CharField(max_length=255, verbose_name='Longitude')
 
     def __str__(self):
         return self.name
@@ -151,11 +153,14 @@ class Observation(models.Model):
 
 
 class WatershedPipe(models.Model):
-    watershedID = models.CharField(max_length=20, primary_key=True, verbose_name='wID')
+    connectionID = models.CharField(max_length=20, primary_key=True, verbose_name='cID')
+    watershedID = models.CharField(max_length=20, verbose_name='wID')
     pipeID = models.CharField(max_length=20, verbose_name='pID')
     class Meta:
+        managed = False
         db_table = 'WatershedPipe'
-        unique_together = ("watershedID", "pipeID")
+        app_label = 'watershed'
+
 
 
 

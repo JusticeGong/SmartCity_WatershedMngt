@@ -33,6 +33,8 @@ def generic_create(request, type):
         form = ManmadeFeatureForm(request.POST or None)
     elif type == 'ffinfo':
         form = ffInfoForm(request.POST or None)
+    elif type == 'WatershedPipeConnection':
+        form = WatershedPipeForm(request.POST or None)
     else:
         form = None
 
@@ -77,6 +79,11 @@ def generic_update(request, pk, type):
     elif type == 'ffinfo':
         ffInfoInstance=get_object_or_404(ffInfo, pk=pk)
         form = ffInfoForm(request.POST or None, instance=ffInfoInstance)
+
+    elif type == 'WatershedPipeConnection':
+        wpconnection=get_object_or_404(WatershedPipe, pk=pk)
+        form = WatershedPipeForm(request.POST or None, instance=wpconnection)
+
     else:
         form = None
 
@@ -157,6 +164,10 @@ def generic_detail(request, pk, type):
         ffInfoV=get_object_or_404(ffInfo, pk=pk)
         ctx['entity']=ffInfoV
 
+    elif type == 'WatershedPipeConnection':
+        wpc = get_object_or_404(WatershedPipe, pk=pk)
+        ctx['entity'] = wpc
+
     else:
         form = None
 
@@ -179,6 +190,8 @@ def generic_delete(request, pk, type):
         ManmadeFeature.objects.filter(featureID=pk).delete()
     elif type == 'ffinfo':
         ffInfo.objects.filter(ffInfoID=pk).delete()
+    elif type == 'WatershedPipeConnection':
+        WatershedPipe.objects.using('Integration').filter(watershedID=pk).delete()
     else:
         pass
 
@@ -198,6 +211,7 @@ def index(request):
     all_naturalfeature = NaturalFeature.objects.all()
     all_ffinfo = ffInfo.objects.all()
     all_observation = Observation.objects.all()
+    all_watershedpipe = WatershedPipe.objects.using('Integration').all()
 
     context = {
         'all_watershed': all_watershed,
@@ -206,7 +220,8 @@ def index(request):
         'all_manmadefeature': all_manmadefeature,
         'all_naturalfeature': all_naturalfeature,
         'all_ffinfo': all_ffinfo,
-        'all_observation': all_observation
+        'all_observation': all_observation,
+        'all_watershedpipe': all_watershedpipe
     }
     return render(request, 'watershed/index.html', context)
 

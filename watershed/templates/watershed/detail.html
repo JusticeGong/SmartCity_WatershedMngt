@@ -216,6 +216,7 @@
                             <table class="table table-hover">
                               <thead>
                                 <tr>
+                                  <th>ConnectionID</th>
                                   <th>WatershedID</th>
                                   <th>PipeID</th>
                                 </tr>
@@ -223,6 +224,7 @@
                               <tbody>
                                 {% for item in WPConnection %}
                                     <tr>
+                                      <td>{{ item.connectionID }}</td>
                                       <td>{{ item.watershedID }}</td>
                                       <td>{{ item.pipeID }}</td>
                                     </tr>

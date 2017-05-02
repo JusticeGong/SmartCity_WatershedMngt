@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^ffinfo_new$', views.generic_create, {'type':'ffinfo'}, name='ffinfo_new'),
     url(r'^naturalfeature_new$', views.generic_create, {'type':'Natural Feature'},name='naturalfeature_new'),
     url(r'^manmadefeature_new$', views.generic_create,{'type':'Manmade Feature'}, name='manmadefeature_new'),
+    url(r'^wpconnection_new$', views.generic_create, {'type': 'WatershedPipeConnection'}, name='wpconnection_new'),
 
     #URL for Generic Update
     url(r'^florafauna/(?P<pk>.*)/update$', views.generic_update, {'type':'floraFauna'},name='florafauna_update'),
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^naturalfeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Natural Feature'}, name='naturalfeature_update'),
     url(r'^manmadefeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Manmade Feature'}, name='manmadefeature_update'),
     url(r'^(?P<pk>.*)/update$', views.generic_update, {'type':'Watershed'}, name='watershed_update'),
+    url(r'^wpconnection/(?P<pk>.*)/update$', views.generic_update, {'type': 'WatershedPipeConnection'}, name='wpconnection_update'),
 
     #URL for Generic Delete
     url(r'^manmadefeature/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Manmade Feature'}, name='manmadefeature_delete'),
@@ -31,6 +33,7 @@ urlpatterns = [
     url(r'^maintenance/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Maintenance'}, name='maintenance_delete'),
     url(r'^florafauna/(?P<pk>.*)/delete$', views.generic_delete, {'type':'floraFauna'}, name='florafauna_delete'),
     url(r'^(?P<pk>.*)/delete$', views.generic_delete, {'type':'Watershed'}, name='watershed_delete'),
+    url(r'^wpconnection/(?P<pk>.*)/delete$', views.generic_delete, {'type': 'WatershedPipeConnection'}, name='wpconnection_delete'),
 
     #URL for Generic Read
     url(r'^maintenance/(?P<pk>.*)/$', views.generic_detail, {'type':'Maintenance'},name="detail_maintenance"),
@@ -39,6 +42,7 @@ urlpatterns = [
     url(r'^ffinfo/(?P<pk>.*)/$', views.generic_detail, {'type':'ffinfo'},name='detail_ffinfo'),
     url(r'^naturalfeature/(?P<pk>.*)/$', views.generic_detail, {'type':'Natural Feature'}, name='detail_naturalfeature'),
     url(r'^manmadefeature/(?P<pk>.*)/$', views.generic_detail, {'type':'Manmade Feature'}, name='detail_manmadefeature'),
+    url(r'^wpconnection/(?P<pk>.*)/$', views.generic_detail, {'type': 'WatershedPipeConnection'}, name='detail_wpconnection'),
 
 
 

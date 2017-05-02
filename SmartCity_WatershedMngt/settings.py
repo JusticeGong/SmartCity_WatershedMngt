@@ -104,6 +104,14 @@ DATABASES = {
         'PASSWORD': 'pass1234',
         'HOST': 'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
+    },
+    'stormwater': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'stormwater',
+        'USER': 'bpasmartcity1',
+        'PASSWORD': 'pass1234',
+        'HOST': 'smartcity1.cwir7vtofu6m.us-west-2.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 

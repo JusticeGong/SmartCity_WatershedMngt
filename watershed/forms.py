@@ -62,7 +62,7 @@ class ffInfoForm(forms.ModelForm):
 
 #===========Man made feature========
 class ManmadeFeatureForm(forms.ModelForm):
-	featureID = forms.CharField(max_length=20, label="Specie:", widget=forms.TextInput(attrs={'class':'form-control'}))
+	featureID = forms.CharField(max_length=20, label="Manmade Feature ID", widget=forms.TextInput(attrs={'class':'form-control'}))
 	watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
 	name = forms.CharField(max_length=20, label="Name:", widget=forms.TextInput(attrs={'class':'form-control'}))
 	description = forms.CharField(max_length=255, label="Description:", widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}))
@@ -74,11 +74,12 @@ class ManmadeFeatureForm(forms.ModelForm):
 
 #===========Natural feature ========
 class NaturalFeatureForm(forms.ModelForm):
-	featureID = forms.CharField(max_length=20, label="Specie:", widget=forms.TextInput(attrs={'class':'form-control'}))
+	featureID = forms.CharField(max_length=20, label="Natural Feature ID:", widget=forms.TextInput(attrs={'class':'form-control'}))
 	watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
 	name = forms.CharField(max_length=20, label="Name:", widget=forms.TextInput(attrs={'class':'form-control'}))
 	description = forms.CharField(max_length=255, label="Description:", widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}))
-
+	latitude = forms.CharField(max_length=255, label="Latitude:", widget=forms.TextInput(attrs={'class': 'form-control'}))
+	longitude = forms.CharField(max_length=255, label="Longitude:", widget=forms.TextInput(attrs={'class': 'form-control'}))
 	class Meta:
 		model = NaturalFeature
 		exclude = []
@@ -97,3 +98,12 @@ class ObservationForm(forms.ModelForm):
 		model = Observation
 		exclude=[]
 
+#=========WatershedPipe ==============
+class WatershedPipeForm(forms.ModelForm):
+	connectionID = forms.CharField(max_length=20, label="ID:", widget=forms.TextInput(attrs={'class':'form-control'}))
+	watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
+	pipeID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Pipe.objects.using('stormwater').all(), widget=forms.Select(attrs={'class':'form-control'}))
+
+	class Meta:
+		model = Observation
+		exclude=[]
