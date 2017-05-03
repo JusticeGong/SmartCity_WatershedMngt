@@ -6,12 +6,16 @@ from django.forms import ModelForm
 from django.core.exceptions import ObjectDoesNotExist
 from watershed.forms import *
 from django.http import Http404
+from watershed.GeoRSSGenerate import GeoRssGenerator
 
 # #Generate GeoRSS
 # def GeoRSS
 
-
-
+def GenerateGeoRSS(request, type):
+    GeoRssGenerator()
+    #Load form
+    template_name='watershed/index.html'
+    return index(request)
 
 
 

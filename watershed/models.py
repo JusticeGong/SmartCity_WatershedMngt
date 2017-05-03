@@ -153,10 +153,10 @@ class Observation(models.Model):
 
 class Pipe(models.Model):
     pipeid = models.CharField(db_column='pipeId', primary_key=True)  # Field name made lowercase.
-    capacity = models.FloatField(db_column='pipeId', blank=True, null=True)
-    sourcelocation = models.CharField(max_length=20, verbose_name='wID')
-    endlocation = models.CharField(max_length=20, verbose_name='wID')
-    sensorid = models.CharField(max_length=20, verbose_name='wID')
+    capacity = models.CharField(max_length=20, verbose_name='capacity')
+    sourcelocation = models.CharField(max_length=20, verbose_name='sourcelocation')
+    endlocation = models.CharField(max_length=20, verbose_name='endlocation')
+    sensorid = models.CharField(max_length=20, verbose_name='sensorid')
 
     def __str__(self):
         return self.pipeid
@@ -171,10 +171,10 @@ class Pipe(models.Model):
 
 class WatershedPipe(models.Model):
     connectionID = models.CharField(max_length=20, primary_key=True, verbose_name='cID')
-    #watershedID = models.CharField(max_length=20, verbose_name='wID')
-    #pipeID = models.CharField(max_length=20, verbose_name='pID')
-    watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='wID')
-    pipeID = models.ForeignKey(Pipe, on_delete=models.CASCADE, db_column='pipeid', verbose_name='pID')
+    watershedID = models.CharField(max_length=20, verbose_name='wID')
+    pipeID = models.CharField(max_length=20, verbose_name='pID')
+    # watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='wID')
+    # pipeID = models.ForeignKey(Pipe, on_delete=models.CASCADE, db_column='pipeid', verbose_name='pID')
 
     def __str__(self):
         return self.connectionID
@@ -189,6 +189,7 @@ class WatershedPipe(models.Model):
         managed = False
         db_table = 'WatershedPipe'
         app_label = 'integrate'
+
 
 
 # class Pipe(models.Model):

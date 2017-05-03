@@ -15,13 +15,12 @@
 <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
         <p>List of Watersheds</p>
+        <a href="{% url 'watershed:GenerateGeoRSS' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Generate GeoRSS</a>
 </div>
 
 <div class="container-fluid">
     <!--Button for Adding Watershed-->
     <a href="{% url 'watershed:watershed_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Watershed</a>
-
-
 
   <h3>Index View:</h3>
     {% if all_watershed %}
@@ -233,17 +232,17 @@
     <a href="{% url 'watershed:wpconnection_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Watershed-Pipe Connection</a>
 
     <h3>Connection Information:</h3>
-    {% if all_watershedpipe %}
+    {% if all_observation %}
     <div class="list-group">
-        {% for info in all_watershedpipe %}
+        {% for info in all_observation %}
         <div class="list-group-item">
-            <a href="{% url 'watershed:detail_wpconnection' info.connectionID %}" class="h4">{{ info.connectionID }}</a>
+            <a href="{% url 'watershed:detail_observation' info.observationID %}" class="h4">{{ info.description }}</a>
 
             <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:wpconnection_update' info.connectionID %}">
+                <a class="btn btn-xs btn-warning" href="{% url 'watershed:wpconnection_update' info.observationID %}">
                     <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:wpconnection_delete' info.connectionID %}">
+                <a class="btn btn-xs btn-danger" href="{% url 'watershed:observation_delete' info.observationID %}">
                     <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>

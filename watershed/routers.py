@@ -33,3 +33,9 @@ class IntegrationDatabaseRouter(object):
         elif model._meta.app_label == 'stormwater':
             return 'stormwater'
         return 'default'
+
+    # def allow_relation(self, obj1, obj2, **hints):
+    #     app_list = ('watershed', 'stormwater', 'integrate')
+    #     if obj1._meta.app_label in app_list or obj2._meta.app_label in app_list:
+    #         return True
+    #     return False
