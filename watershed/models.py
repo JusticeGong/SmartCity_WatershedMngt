@@ -8,7 +8,9 @@ class Watershed(models.Model):
     percentLand = models.CharField(max_length=20, verbose_name='Percent of Land')
     supportsTourism = models.CharField(max_length=20, verbose_name='Supports Tourism')
     watershedDescription = models.CharField(max_length=255, verbose_name='Description')
-    location = models.CharField(max_length=255, verbose_name='Location')
+    latitude = models.CharField(max_length=20, verbose_name='Latitude')
+    longitude = models.CharField(max_length=20, verbose_name='Longitude')
+
 
     def __str__(self):
         return self.name

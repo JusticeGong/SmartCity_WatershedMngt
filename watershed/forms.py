@@ -11,7 +11,10 @@ class WatershedForm(forms.ModelForm):
     percentLand = forms.CharField(max_length=20, label="percentage of land:", widget=forms.TextInput(attrs={'class':'form-control'}))
     supportsTourism = forms.ChoiceField(label="Does it support Tourism?", choices=[('Yes','yes'),('No', 'no')], widget=forms.Select(attrs={'class':'form-control'}))
     watershedDescription = forms.CharField(max_length=255, label="Description:", widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}))
-    location = forms.CharField(max_length=255, label="Where is it located?", widget=forms.TextInput(attrs={'class':'form-control'}))
+    latitude = forms.CharField(max_length=20, label="What is its latitude",
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
+    longitude = forms.CharField(max_length=20, label="What is its longitude?",
+                               widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Watershed
