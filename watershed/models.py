@@ -170,9 +170,9 @@ class Pipe(models.Model):
         app_label = 'stormwater'
 
 class WatershedPipe(models.Model):
-    connectionID = models.CharField(max_length=20, primary_key=True, verbose_name='cID')
-    watershedID = models.CharField(max_length=20, verbose_name='wID')
-    pipeID = models.CharField(max_length=20, verbose_name='pID')
+    connectionID = models.CharField(max_length=20, primary_key=True, verbose_name='Connection ID')
+    watershedID = models.CharField(max_length=20, verbose_name='Watershed ID')
+    pipeID = models.CharField(max_length=20, verbose_name='Pipe ID')
     # watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='wID')
     # pipeID = models.ForeignKey(Pipe, on_delete=models.CASCADE, db_column='pipeid', verbose_name='pID')
 

@@ -229,20 +229,20 @@
 
 <div class="container-fluid">
     <!--Button for Adding WatershedPipe-->
-    <a href="{% url 'watershed:wpconnection_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Watershed-Pipe Connection</a>
+    <a href="{% url 'watershed:wpconnection_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Watershed-Pipe Connection </a>
 
     <h3>Connection Information:</h3>
-    {% if all_observation %}
+    {% if all_watershedpipe %}
     <div class="list-group">
-        {% for info in all_observation %}
+        {% for info in all_watershedpipe %}
         <div class="list-group-item">
-            <a href="{% url 'watershed:detail_observation' info.observationID %}" class="h4">{{ info.description }}</a>
+            <a href="{% url 'watershed:detail_wpconnection' info.connectionID %}" class="h4">{{ info.connectionID }}</a>
 
             <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:wpconnection_update' info.observationID %}">
+                <a class="btn btn-xs btn-warning" href="{% url 'watershed:wpconnection_update' info.connectionID %}">
                     <span class="glyphicon glyphicon-pencil"> Edit</span>
                 </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:observation_delete' info.observationID %}">
+                <a class="btn btn-xs btn-danger" href="{% url 'watershed:wpconnection_delete' info.connectionID %}">
                     <span class="glyphicon glyphicon-trash"> Delete</span>
                 </a>
             </span>
