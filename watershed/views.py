@@ -82,7 +82,7 @@ def generic_update(request, pk, type):
         form = ffInfoForm(request.POST or None, instance=ffInfoInstance)
 
     elif type == 'WatershedPipeConnection':
-        wpconnection =get_object_or_404(WatershedPipe, connectionID=pk)
+        wpconnection =get_object_or_404(WatershedPipe, pk=pk)
         form = WatershedPipeForm(request.POST or None, instance= wpconnection)
 
     else:
@@ -127,7 +127,7 @@ def generic_detail(request, pk, type):
         except ObjectDoesNotExist:
             FloraAndFauna = None
         try:
-            WPConnection = WatershedPipe.objects.filter(watershedID=pk)
+            WPConnection = WatershedPipe.objects.all().filter(watershedID=pk)
         except ObjectDoesNotExist:
             WPConnection = None
 

@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^wpconnection_new$', views.generic_create, {'type': 'WatershedPipeConnection'}, name='wpconnection_new'),
 
     #URL for Generic Update
+    url(r'^wpconnection/(?P<pk>.*)/update$', views.generic_update, {'type':'WatershedPipeConnection'}, name='wpconnection_update'),
     url(r'^florafauna/(?P<pk>.*)/update$', views.generic_update, {'type':'floraFauna'},name='florafauna_update'),
     url(r'^maintenance/(?P<pk>.*)/update$', views.generic_update, {'type':'Maintenance'}, name='maintenance_update'),
     url(r'^observation/(?P<pk>.*)/update$', views.generic_update,{'type':'Observation'}, name='observation_update'),
@@ -23,9 +24,10 @@ urlpatterns = [
     url(r'^naturalfeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Natural Feature'}, name='naturalfeature_update'),
     url(r'^manmadefeature/(?P<pk>.*)/update$', views.generic_update, {'type':'Manmade Feature'}, name='manmadefeature_update'),
     url(r'^(?P<pk>.*)/update$', views.generic_update, {'type':'Watershed'}, name='watershed_update'),
-    url(r'^wpconnection/(?P<pk>.*)/update$', views.generic_update, {'type':'WatershedPipeConnection'}, name='wpconnection_update'),
+
 
     #URL for Generic Delete
+    url(r'^wpconnection/(?P<pk>.*)/delete$', views.generic_delete, {'type': 'WatershedPipeConnection'}, name='wpconnection_delete'),
     url(r'^manmadefeature/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Manmade Feature'}, name='manmadefeature_delete'),
     url(r'^naturalfeature/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Natural Feature'}, name='naturalfeature_delete'),
     url(r'^ffinfo/(?P<pk>.*)/delete$', views.generic_delete, {'type':'ffinfo'}, name='ffinfo_delete'),
@@ -33,7 +35,6 @@ urlpatterns = [
     url(r'^maintenance/(?P<pk>.*)/delete$', views.generic_delete, {'type':'Maintenance'}, name='maintenance_delete'),
     url(r'^florafauna/(?P<pk>.*)/delete$', views.generic_delete, {'type':'floraFauna'}, name='florafauna_delete'),
     url(r'^(?P<pk>.*)/delete$', views.generic_delete, {'type':'Watershed'}, name='watershed_delete'),
-    url(r'^wpconnection/(?P<pk>.*)/delete$', views.generic_delete, {'type': 'WatershedPipeConnection'}, name='wpconnection_delete'),
 
     #URL for Generic Read
     url(r'^maintenance/(?P<pk>.*)/$', views.generic_detail, {'type':'Maintenance'},name="detail_maintenance"),
