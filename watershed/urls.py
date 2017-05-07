@@ -7,6 +7,7 @@ urlpatterns = [
 
     #GenerateGeoRSS
     url(r'^GenerateGeoRSS$', views.GenerateGeoRSS, {'type':'GenerateGeoRSS'}, name='GenerateGeoRSS'),
+    url(r'^goHome$', views.index, name='index'),
 
     #URL for Generic Create
     url(r'^watershed_new$', views.generic_create, {'type':'Watershed'}, name='watershed_new'),
@@ -70,6 +71,7 @@ urlpatterns = [
     
     #URL for homepage
     url(r'^$', views.index, name="index"),
+
     
     #URL for Watershed
     url(r'^(?P<pk>.*)/$',views.generic_detail, {'type':'Watershed'}, name="detail"),

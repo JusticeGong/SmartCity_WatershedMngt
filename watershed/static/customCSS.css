@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+footer { background-color:#0c1a1e; min-height:250px; font-family: 'Open Sans', sans-serif; margin-top: 10px;}
+.footerleft { margin-top:50px;  }
+/*padding:0 36px;*/
+.logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
+
+.footerleft p { color:#fff; font-size:12px !important; font-family: 'Open Sans', sans-serif; margin-bottom:15px;}
+/*.footerleft p i { width:20px; color:#999;}
+*/
+
+.paddingtop-bottom {  margin-top:50px;}
+.footer-ul { list-style-type:none;  padding-left:0px; margin-left:2px;}
+.footer-ul li {  font-size:14px; display: inline-block; padding: 2px; margin: 2px;}
+/*line-height:29px;*/
+.footer-ul li a { color:#a0a3a4; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
+/*.footer-ul i { margin-right:10px;}
+*/.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f; }
+
+ .title-footer { font-size:21px; font-weight:700; color:#d9d6d6; margin-bottom:22px;}
+
+/*Navigation bar */
+ .customNavBar {background-color: #0c1a1e;}
+ .customNavBarLink a{padding-right: 20px !important;}
+ .customNavBarLink a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f !important; text-decoration: none !important}
+ 
+/**/
+.jumbotron {margin-top:40px; 
+			/*background-image: url(http://wallpaper.pickywallpapers.com/1920x1080/dark-water-near-the-snowy-mountain.jpg); */
+			background-size: cover;
+			background-image: url("waterfallV2.jpg");}
+
+

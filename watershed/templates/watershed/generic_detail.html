@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "customCSS.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <!--Scripts-->
@@ -14,6 +18,17 @@
 </head>
 
 <body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-default navbar-fixed-top customNavBar">
+    <div class="container-fluid">
+        <p class="navbar-text customNavBarLink"><a href="{% url 'watershed:GenerateGeoRSS' %}" class="navbar-link"> Home</a></p>
+
+        <p class="navbar-text navbar-right customNavBarLink"> 
+            <a class="navbar-link  " href="http://smartcities.mbrxdram5u.us-west-2.elasticbeanstalk.com/waterevent/"> Go to Smart Cities 1</a></p>
+  </div>
+</nav>
+
 
     <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
@@ -38,6 +53,44 @@
                         {% endfor %}
                 </table>
             </div>
+            <div class="text-center">
+                <a class="btn btn-success" href="{% url Add %}">
+                    <span class="glyphicon glyphicon-plus"></span></a>
+                <a class="btn btn-warning" href="{% url Update pk %}">
+                    <span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn btn-success btn-danger" href="{% url Delete pk %}"> <span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+
         </div>
+
     </div>
     </div>
+
+    <!--Test-->
+    <footer>
+      <div class="container">
+          <div class="col-md-6 col-sm-6 footerleft ">
+            <div class="title-footer text-center"> About the Project</div>
+            <p>This web application was made as part of the class Business Process Analysis, taught at the University of Maryland - Smith School of Business. It is the final project and served as a learning platform for the students to test and understand the different technologies. </p>
+            <p>Through out the project, we learned the agile methodology and did a total of 6 sprints. Some of the techonologies and tools used in this app include Django, Python, ArcGis, Amazon AWS and Bootstrap .</p>
+
+
+          </div>
+          <div class="col-md-6 col-sm-6 paddingtop-bottom text-center">
+            <h6 class="title-footer">About us</h6>
+            <ul class="footer-ul text-center">
+              <li><a href="https://www.linkedin.com/in/amiyakumardas/"> Amiya Das<br/> <i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/melissa-delcid-94380a8b/"> Melissa Delcid<br> <i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/kanchan-markandeya-041ba1b5/"> Kanchan Markandeya<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/yangmen/">Yang Men<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/zheng-gong-78396777/">Zheng Gong<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/gonche1124/"> Andres Gonzalez<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+            </ul>
+          </div>
+      </div>
+    </footer>
+
+
+
+
+

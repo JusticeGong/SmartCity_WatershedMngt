@@ -5,7 +5,10 @@
     <title>detail</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "customCSS.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -15,6 +18,15 @@
 </head>
 
 <body>
+<!-- NAVIGATION -->
+  <nav class="navbar navbar-default navbar-fixed-top customNavBar">
+    <div class="container-fluid">
+        <p class="navbar-text customNavBarLink"><a href="{% url 'watershed:GenerateGeoRSS' %}" class="navbar-link"> Home</a></p>
+
+        <p class="navbar-text navbar-right customNavBarLink"> 
+            <a class="navbar-link  " href="http://smartcities.mbrxdram5u.us-west-2.elasticbeanstalk.com/waterevent/"> Go to Smart Cities 1</a></p>
+    </div>
+  </nav>
 
     <div class="jumbotron text-center">
         <h1>Watershed Application</h1>
@@ -30,7 +42,7 @@
           <h1>{{ watershed.name }}</h1>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="panel panel-primary">
             <!-- Default panel contents -->
                 <div class="panel-heading text-center">Watershed Information</div>
@@ -46,7 +58,7 @@
         </div>
 
          <!--Other Info-->
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
            <div role="tabpanel">
 
                   <!-- Nav tabs -->
@@ -61,7 +73,7 @@
                           <a href="#Observation" aria-controls="Observation" role="tab" data-toggle="tab">Observation</a>
                       </li>
                       <li role="presentation">
-                          <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">F - F</a>
+                          <a href="#floraAndfauna" aria-controls="floraAndfauna" role="tab" data-toggle="tab">Flora and Fauna</a>
                       </li>
                       <li role="presentation">
                           <a href="#WatershedPipe" aria-controls="WatershedPipe" role="tab" data-toggle="tab">Pipe</a>
@@ -110,9 +122,13 @@
                               </tbody>
                           </table>
                         {% else %}
-                          <p class="lead"> No features  for this watershed </p>
+                          <p class="lead text-center"> No features  for this watershed </p>
                         {% endif %}
-                      
+                        <div class="text-center">
+                          <a href="{% url 'watershed:manmadefeature_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Man made Feature</a>
+                          <a href="{% url 'watershed:naturalfeature_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Natural Feature</a>
+                        </div>
+
                       </div>
 
                       <!-- Maintenace Info -->
@@ -142,8 +158,11 @@
                               </tbody>
                             </table>
                           {% else %}
-                                <p class="lead"> No Maintenance record for this watershed </p>
+                                <p class="lead text-center"> No Maintenance record for this watershed </p>
                           {% endif %}
+                          <div class="text-center">
+                            <a href="{% url 'watershed:maintenance_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Maintenance</a>
+                          </div>
                       </div>
 
                       <!--Observations -->
@@ -173,8 +192,11 @@
                               </tbody>
                             </table>
                         {% else %}
-                                <p class="lead"> No Observations record for this watershed </p>
+                                <p class="lead text-center"> No Observations record for this watershed </p>
                         {% endif %}
+                        <div class="text-center">
+                          <a href="{% url 'watershed:observation_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Observation</a>
+                        </div>
                       </div>
 
                       <!--Flora and Fauna -->
@@ -187,7 +209,6 @@
                                   <th>Description</th>
                                   <th>URL</th>
                                   <th> More info</th>
-
                                 </tr>
                               </thead>
                               <tbody>
@@ -198,15 +219,17 @@
                                       <td>{{ item.photoUrl }}</td>
                                       <td>
                                         <a href="{% url 'watershed:detail_ffinfo' item.ffInfoID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
-
                                       </td>
                                     </tr>
                                 {% endfor %}
                               </tbody>
                             </table>
                         {% else %}
-                                <p class="lead"> No Flora or Fauna record for this watershed </p>
+                                <h3 class="lead text-center">No Flora or Fauna record for this watershed</h3>
                         {% endif %}
+                        <div class="text-center">
+                          <a href="{% url 'watershed:ffinfo_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Flora and Fauna</a>
+                        </div>
                       </div>
 
 
@@ -232,8 +255,11 @@
                               </tbody>
                             </table>
                         {% else %}
-                                <p class="lead"> No pipe record for this watershed </p>
+                                <p class="lead text-center"> No pipe record for this watershed </p>
                         {% endif %}
+                        <div class="text-center">
+                          <a href="{% url 'watershed:wpconnection_new' %}" class="btn btn-success btn-sm active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Watershed-Pipe</a>
+                        </div>
                       </div>
 
 
@@ -247,7 +273,7 @@
         </div>-->
 
         <!--Map-->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
         </div>
     
@@ -261,7 +287,29 @@
     <br>
     
     
+<!-- FOOTER -->
+    <footer>
+      <div class="container">
+          <div class="col-md-6 col-sm-6 footerleft ">
+            <div class="title-footer text-center"> About the Project</div>
+            <p>This web application was made as part of the class Business Process Analysis, taught at the University of Maryland - Smith School of Business. It is the final project and served as a learning platform for the students to test and understand the different technologies. </p>
+            <p>Through out the project, we learned the agile methodology and did a total of 6 sprints. Some of the techonologies and tools used in this app include Django, Python, ArcGis, Amazon AWS and Bootstrap .</p>
 
+
+          </div>
+          <div class="col-md-6 col-sm-6 paddingtop-bottom text-center">
+            <h6 class="title-footer">About us</h6>
+            <ul class="footer-ul text-center">
+              <li><a href="https://www.linkedin.com/in/amiyakumardas/"> Amiya Das<br/> <i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/melissa-delcid-94380a8b/"> Melissa Delcid<br> <i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/kanchan-markandeya-041ba1b5/"> Kanchan Markandeya<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/yangmen/">Yang Men<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/zheng-gong-78396777/">Zheng Gong<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/gonche1124/"> Andres Gonzalez<br/><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+            </ul>
+          </div>
+      </div>
+    </footer>
 
 
 

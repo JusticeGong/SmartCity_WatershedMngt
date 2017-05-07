@@ -92,7 +92,7 @@ class NaturalFeatureForm(forms.ModelForm):
 class ObservationForm(forms.ModelForm):
     observationID = forms.CharField(max_length=20, label="ID:", widget=forms.TextInput(attrs={'class':'form-control'}))
     watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
-    sublocation = forms.CharField(max_length=20, label="Sublocation:", widget=forms.TextInput(attrs={'class':'form-control'}))
+    sublocation = forms.CharField(max_length=20, label="Enter the sublocation as text:", widget=forms.TextInput(attrs={'class':'form-control'}))
     date = forms.CharField(max_length=20, label="Date:", widget=forms.TextInput(attrs={'class':'form-control'}))
     description = forms.CharField(max_length=255, label="Description:", widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}))
     testType = forms.CharField(max_length=20, label="Test Type:", widget=forms.TextInput(attrs={'class':'form-control'}))
