@@ -27,8 +27,8 @@
 </nav>
 
 <div class="jumbotron text-center">
-        <h1>Watershed Application</h1>
-        <p>List of Watersheds</p>
+        <h1>Watershed Management System</h1>
+        
         
 </div>
 
@@ -62,7 +62,7 @@
        
         <a href="{% url 'watershed:ffinfo_new' %}" class="btn btn-info btn-md active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Flora Fauna Info</a>
         <a href="{% url 'watershed:observation_new' %}" class="btn btn-info btn-md active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Observation</a>
-        <a href="{% url 'watershed:wpconnection_new' %}" class="btn btn-info btn-md active text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Watershed-Pipe</a>
+        
     </div>
     <br>
 
@@ -152,157 +152,6 @@
 
 
 </div>
-
-
-<!--Maintenance
- <div class="container-fluid">
-    <a href="{% url 'watershed:maintenance_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Maintenance</a>
-
-    <h3>Maintenance:</h3>
-    {% if all_maintenance%}
-    <div class="list-group">
-        {% for item in all_maintenance %}
-        <div class="list-group-item">
-            <a href="{% url 'watershed:detail_maintenance' item.maintenanceID %}" class="h4">{{ item.issue }}</a>
-
-            <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:maintenance_update' item.maintenanceID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
-                </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:maintenance_delete' item.maintenanceID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
-                </a>
-            </span>
-
-
-        </div>
-        {% endfor %}
-    </div>
-     {% else %}
-        <h2> You have no Maintenance in your database </h2>
-    {% endif %}
-</div>
--->
-
-<!--Manmade
-<div class="container-fluid">
-    <a href="{% url 'watershed:manmadefeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Manmade Feature</a>
-
-    <h3>Manmade Feature:</h3>
-    {% if all_manmadefeature%}
-    <div class="list-group">
-        {% for feature in all_manmadefeature %}
-        <div class="list-group-item">
-            <a href="{% url 'watershed:detail_manmadefeature' feature.featureID %}" class="h4">{{ feature.name }}</a>
-
-            <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:manmadefeature_update' feature.featureID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
-                </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:manmadefeature_delete' feature.featureID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
-                </a>
-            </span>
-
-
-        </div>
-        {% endfor %}
-    </div>
-     {% else %}
-        <h2> You have no Manmade Features in your database </h2>
-    {% endif %}
-</div>
--->
-
-<!--Natural
-<div class="container-fluid">
-    <a href="{% url 'watershed:naturalfeature_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Natural Feature</a>
-
-    <h3>Natural Feature:</h3>
-    {% if all_naturalfeature%}
-    <div class="list-group">
-        {% for natural in all_naturalfeature %}
-        <div class="list-group-item">
-            <a href="{% url 'watershed:detail_naturalfeature' natural.featureID %}" class="h4">{{ natural.name }}</a>
-
-            <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:naturalfeature_update' natural.featureID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
-                </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:naturalfeature_delete' natural.featureID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
-                </a>
-            </span>
-
-
-        </div>
-        {% endfor %}
-    </div>
-     {% else %}
-        <h2> You have no Natural Features in your database </h2>
-    {% endif %}
-</div>
--->
-
-<!--IINfo
-<div>
-    <a href="{% url 'watershed:ffinfo_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Flora Fauna Info</a>
-
-    <h3>Flora Fauna Information:</h3>
-    {% if all_ffinfo%}
-    <div class="list-group">
-        {% for info in all_ffinfo %}
-        <div class="list-group-item">
-            <a href="{% url 'watershed:detail_ffinfo' info.ffInfoID %}" class="h4">{{ info.description }}</a>
-
-            <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:ffinfo_update' info.ffInfoID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
-                </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:ffinfo_delete' info.ffInfoID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
-                </a>
-            </span>
-
-
-        </div>
-        {% endfor %}
-    </div>
-     {% else %}
-        <h2> You have no Flora Fauna Information in your database </h2>
-    {% endif %}
-</div>
--->
-
-<!--Observation
-<div class="container-fluid">
-    <a href="{% url 'watershed:observation_new' %}" class="btn btn-primary btn-lg active btn-block text-center" role="button" aria-pressed="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Observation</a>
-
-    <h3>Observation Information:</h3>
-    {% if all_observation %}
-    <div class="list-group">
-        {% for info in all_observation %}
-        <div class="list-group-item">
-            <a href="{% url 'watershed:detail_observation' info.observationID %}" class="h4">{{ info.description }}</a>
-
-            <span class="pull-right">
-                <a class="btn btn-xs btn-warning" href="{% url 'watershed:observation_update' info.observationID %}">
-                    <span class="glyphicon glyphicon-pencil"> Edit</span>
-                </a>
-                <a class="btn btn-xs btn-danger" href="{% url 'watershed:observation_delete' info.observationID %}">
-                    <span class="glyphicon glyphicon-trash"> Delete</span>
-                </a>
-            </span>
-
-
-        </div>
-        {% endfor %}
-    </div>
-     {% else %}
-        <h2> You have no Observation Information in your database </h2>
-    {% endif %}
-</div>
--->
 
 
 

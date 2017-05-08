@@ -174,9 +174,9 @@ def generic_detail(request, pk, type):
     elif type == 'floraFauna':
         florafauna = get_object_or_404(FloraFauna, pk=pk)
         ctx['entity']=florafauna
-        ctx['Add']='watershed:floraFauna_new'
-        ctx['Delete']='watershed:floraFauna_delete'
-        ctx['Update']='watershed:floraFauna_update'
+        ctx['Add']='watershed:florafauna_new'
+        ctx['Delete']='watershed:florafauna_delete'
+        ctx['Update']='watershed:florafauna_update'
         ctx['type'] = 'Flora and Fauna'
 
     elif type == 'Maintenance':
