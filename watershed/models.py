@@ -134,10 +134,11 @@ class NaturalFeature(models.Model):
 class Observation(models.Model):
     observationID = models.CharField(max_length=20, primary_key=True, verbose_name='ID')
     watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='Watershed ID')
-    sublocation = models.CharField(max_length=255, verbose_name='Sublocation')
     date = models.CharField(max_length=20, verbose_name='Date')
-    description = models.CharField(max_length=255, verbose_name='Description')
     testType = models.CharField(max_length=20, verbose_name='Type')
+    testLevel = models.CharField(max_length=20, verbose_name='Level')
+    latitude = models.CharField(max_length=20, verbose_name='Latitude')
+    longitude = models.CharField(max_length=20, verbose_name='Longitude')
 
     def __str__(self):
         return self.description

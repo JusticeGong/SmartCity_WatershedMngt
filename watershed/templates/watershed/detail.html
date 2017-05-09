@@ -13,8 +13,8 @@
     <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    
+    <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.20/"></script>
 </head>
 
 <body>
@@ -274,7 +274,13 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
           <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
               <div class="embed-container">
-                <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
+                  <!--ArcGIS Online-->
+{#                <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe>#}
+                  <!--ArcGIS JavaScript API-->
+                  <body class="claro">
+                    <div id="map"></div>
+                  </body>
+              </div>
         </div>
     
     
@@ -316,22 +322,19 @@
 <!--Javascript code-->
 {% block js %}
     <script>
-    function initMap() {
-        var urlMap = {lat: 12.927923, lng: 77.627108};
-        var uluru = {lat: 12.927823, lng: 77.627208};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: urlMap
-        });
+        require(["esri/map", "esri/arcgis/utils", "dojo/domReady!"], function(Map, arcgisUtils) {
+{#            arcgisUtils.createMap("1a40fa5cc1ab4569b79f45444d728067", "mapDiv").then(function (response) {#}
+{#                map = response.map;#}
+{#            });#}
 
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          title: "Deer 1",
+            var map = new Map("map", {
+            center: [-118, 34.5],
+            zoom: 8,
+            basemap: "topo",
+            });
+
         });
-    }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiw0iU0egdeVrOKboOOZ2n1WXS3Os0WgI&callback=initMap"></script>
 
 {% endblock %}
 </body>
