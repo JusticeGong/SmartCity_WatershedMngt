@@ -94,7 +94,7 @@ class ObservationForm(forms.ModelForm):
     watershedID = forms.ModelChoiceField(label='Relation to Watershed', queryset=Watershed.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
     date = forms.CharField(max_length=20, label="Date:", widget=forms.TextInput(attrs={'class':'form-control'}))
     testType = forms.CharField(max_length=20, label="Test Type:", widget=forms.TextInput(attrs={'class':'form-control'}))
-    description = forms.CharField(max_length=20, label="Test Level:", widget=forms.Textarea(attrs={'class':'form-control'}))
+    testLevel = forms.CharField(max_length=20, label="Test Level:", widget=forms.TextInput(attrs={'class':'form-control'}))
     latitude = forms.CharField(max_length=20, label="What is its latitude",
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     longitude = forms.CharField(max_length=20, label="What is its longitude?",
