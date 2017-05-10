@@ -94,6 +94,8 @@ class ManmadeFeature(models.Model):
     watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='Watershed ID')
     name = models.CharField(max_length=255, verbose_name='Name')
     description = models.CharField(max_length=255, verbose_name='Description')
+    latitude = models.CharField(max_length=20, verbose_name='Latitude')
+    longitude = models.CharField(max_length=20, verbose_name='Longitude')
 
     def __str__(self):
         return self.name
@@ -114,8 +116,8 @@ class NaturalFeature(models.Model):
     watershedID = models.ForeignKey(Watershed, on_delete=models.CASCADE, db_column='watershedID', verbose_name='Watershed ID')
     name = models.CharField(max_length=255, verbose_name='Name')
     description = models.CharField(max_length=255, verbose_name='Description')
-    latitude = models.CharField(max_length=255, verbose_name='Latitude')
-    longitude = models.CharField(max_length=255, verbose_name='Longitude')
+    latitude = models.CharField(max_length=20, verbose_name='Latitude')
+    longitude = models.CharField(max_length=20, verbose_name='Longitude')
 
     def __str__(self):
         return self.name
