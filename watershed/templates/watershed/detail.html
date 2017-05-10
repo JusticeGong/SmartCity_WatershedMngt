@@ -169,9 +169,9 @@
                             <table class="table table-hover">
                               <thead>
                                 <tr>
-                                  <th>test type</th>
+                                  <th>Test Type</th>
                                   <th>Date</th>
-                                  <th>sublocation</th>
+                                  <th>Test Level</th>
                                   <th> More info</th>
                                 </tr>
                               </thead>
@@ -180,7 +180,7 @@
                                     <tr>
                                       <td>{{ item.testType }}</td>
                                       <td>{{ item.date }}</td>
-                                      <td>{{ item.sublocation }}</td>
+                                      <td>{{ item.testLevel }}</td>
                                       <td>
                                         <a href="{% url 'watershed:detail_observation' item.observationID %}" class="btn btn-info btn-xs active" role="button"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
 
@@ -275,11 +275,11 @@
           <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
               <div class="embed-container">
                   <!--ArcGIS Online-->
-                <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-80.1426,37.7691,-74.3857,39.7732&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe>
+                <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><small><a href="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-79.1757,37.9494,-75.119,39.7461&amp;home=true&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Watershed Management" src="//www.arcgis.com/apps/Embed/index.html?webmap=5a32e76dca6549b9b4d9ba7ac0e52f22&amp;extent=-79.1757,37.9494,-75.119,39.7461&amp;home=true&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>
                   <!--ArcGIS JavaScript API-->
 {#                  <body class="claro">#}
 {#                    <div id="map"></div>#}
-{#                  </body>#}
+                  </body>
               </div>
         </div>
     
@@ -328,7 +328,7 @@
 {#            });#}
 
             var map = new Map("map", {
-            center: [-118, 34.5],
+            center: [-76.942633, 38.984915],
             zoom: 8,
             basemap: "topo",
             });
@@ -337,5 +337,6 @@
     </script>
 
 {% endblock %}
+    </div>
 </body>
 </html>

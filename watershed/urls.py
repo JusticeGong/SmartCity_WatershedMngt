@@ -5,9 +5,12 @@ app_name = 'watershed'
 
 urlpatterns = [
 
+
+
     #GenerateGeoRSS
     url(r'^GenerateGeoRSS$', views.GenerateGeoRSS, {'type':'GenerateGeoRSS'}, name='GenerateGeoRSS'),
     url(r'^goHome$', views.index, name='index'),
+    url(r'^MapView$', views.ObView, {'type':'ObView'}, name='ObView'),
 
     #URL for Generic Create
     url(r'^watershed_new$', views.generic_create, {'type':'Watershed'}, name='watershed_new'),

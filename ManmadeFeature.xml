@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed>
 <title>Watershed_NaturalFeature</title>
+<entry>
+<title>Bridge</title>
+<id>02050301</id>
+<summary>Wooden bridge</summary>
+<georss:point>40.02750 -75.20673</georss:point>
+</entry>
 </feed>

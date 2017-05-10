@@ -123,4 +123,4 @@ def GeoRssGenerator():
     ManmadeFeature()
     Observation()
 
-# GeoRssGenerator()
+GeoRssGenerator()
