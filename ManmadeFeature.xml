@@ -2,9 +2,183 @@
 <feed>
 <title>Watershed_NaturalFeature</title>
 <entry>
+<title>Tower</title>
+<id>02050301</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.182890251633175 -78.27463461686887</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.96916747946131 -77.23542312166009</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.01739903298932 -76.46447431138874</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02130608</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.15984531640262 -79.05544188915069</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02130608</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.270934825326904 -75.64621976824576</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02050301</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.420903772157644 -78.87665557744319</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.74274534038621 -76.74358963466312</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.681455223652016 -76.45098082765091</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.189658113742965 -76.15472284007264</georss:point>
+</entry>
+<entry>
+<title>Bridge</title>
+<id>05020201</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.270470961555844 -77.99733206006204</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.11313080134222 -75.36496205999029</georss:point>
+</entry>
+<entry>
+<title>Bridge</title>
+<id>05020201</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.62416451134794 -79.4250642203216</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.55561085672445 -78.7078134748686</georss:point>
+</entry>
+<entry>
+<title>Bridge</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.94403809529624 -75.15615916648451</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02130608</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.64405228909394 -79.10231548098865</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02130608</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.66051507780433 -75.95961897652604</georss:point>
+</entry>
+<entry>
+<title>Bridge</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.08905391771576 -76.48901865667227</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.17993517945333 -76.28757177214428</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02050301</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.23837661547434 -78.09893787568552</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141003</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.94662229915331 -76.8510488957413</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.21926277187329 -76.05654308751512</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02050301</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.586659248819586 -75.81308621841465</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>05020201</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.12953597785586 -77.55017644623389</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.323606502408936 -78.51149258724949</georss:point>
+</entry>
+<entry>
 <title>Bridge</title>
 <id>02050301</id>
-<summary>Wooden bridge</summary>
-<georss:point>40.02750 -75.20673</georss:point>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.569036441966674 -78.25790849822664</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>05020201</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.86134583047584 -77.1172434822851</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.35792920023026 -76.41365393255816</georss:point>
+</entry>
+<entry>
+<title>Statue</title>
+<id>02141006</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.57456300211504 -75.66885884166103</georss:point>
+</entry>
+<entry>
+<title>Tower</title>
+<id>05020201</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>39.036286080783505 -77.48324815972745</georss:point>
+</entry>
+<entry>
+<title>Springs</title>
+<id>02050301</id>
+<summary>Best Feature You Should Never Miss</summary>
+<georss:point>38.41951992746116 -78.78789087753266</georss:point>
 </entry>
 </feed>

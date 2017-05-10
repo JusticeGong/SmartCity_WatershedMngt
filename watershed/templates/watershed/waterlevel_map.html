@@ -1,93 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-<title>GeoRSS</title>
-<link rel="stylesheet" href="https://js.arcgis.com/3.20/dijit/themes/tundra/tundra.css">
-<link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
-<style>
-  html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-  #map { height: 100%; margin: 0; padding: 0; }
-  #meta {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    width: 20em;
-    height: 5em;
-    z-index: 40;
-    background: #fff;
-    color: #777;
-    padding: 5px;
-    border: 2px solid #666;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    font-family: arial;
-    font-size: 0.9em;
-  }
-  #meta h3 {
-    color: #666;
-    font-size: 1.1em;
-    padding: 0px;
-    margin: 0px;
-    display: inline-block;
-  }
-  #loading {
-    float: right;
-  }
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<script src="https://js.arcgis.com/3.20/"></script>
-<script>
-  var map;
-  require([
-    "esri/map", "esri/layers/GeoRSSLayer", "esri/InfoTemplate",
-    "dojo/parser", "dojo/_base/array", "dojo/dom-style",
-    "dijit/layout/BorderContainer", "dijit/layout/ContentPane", "dojo/domReady!"
-  ], function(
-    Map, GeoRSSLayer, InfoTemplate,
-    parser, arrayUtils, domStyle
-  ) {
-    map = new esri.Map("map",{
-      basemap: "oceans",
-      center: [-107, 42],
-      zoom: 5
-    });
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Basic Service Area</title>
 
-    // create layout dijits
-    parser.parse();
+  <link rel="stylesheet" href="https://js.arcgis.com/3.20/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
+  <style>
+    body, html, #main {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
 
-    var georssUrl = "https://s3.amazonaws.com/arcgistest/Observation.xml";
-    var georss = new GeoRSSLayer(georssUrl);
-    georss.on("load", function() {
-      // create an info template
-      var template = new InfoTemplate("${title}", "${level}");
-      // set the info template for the feature layers that make up the GeoRSS layer
-      // the GeoRSS layer contains one feature layer for each geometry type
-      var layers = georss.getFeatureLayers();
-      arrayUtils.forEach(layers, function(l) {
-        l.setInfoTemplate(template);
+  <script src="https://js.arcgis.com/3.20/"></script>
+  <script>
+    var map, serviceAreaTask, params, clickpoint;
+
+    require([
+      "esri/map", "esri/config",
+      "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters", "esri/tasks/FeatureSet",
+      "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol",
+      "esri/geometry/Point", "esri/graphic",
+      "dojo/parser", "dojo/dom", "dijit/registry",
+      "esri/Color", "dojo/_base/array",
+      "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
+      "dijit/form/HorizontalRule", "dijit/form/HorizontalRuleLabels", "dijit/form/HorizontalSlider",
+      "dojo/domReady!"
+    ], function(
+      Map, esriConfig,
+      ServiceAreaTask, ServiceAreaParameters, FeatureSet,
+      SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol,
+      Point, Graphic,
+      parser, dom, registry,
+      Color, arrayUtils
+    ) {
+      parser.parse();
+
+      //This sample requires a proxy page to handle communications with the ArcGIS Server services. You will need to
+      //replace the url below with the location of a proxy on your machine. See the 'Using the proxy page' help topic
+      //for details on setting up a proxy page.
+      esriConfig.defaults.io.proxyUrl = "/proxy/";
+
+      map = new Map("map", {
+        basemap: "streets",
+        center: [-77.036667, 38.895111],
+        zoom: 13
       });
+
+      map.on("click", mapClickHandler);
+
+      params = new ServiceAreaParameters();
+      params.defaultBreaks= [1];
+      params.outSpatialReference = map.spatialReference;
+      params.returnFacilities = false;
+
+      serviceAreaTask = new ServiceAreaTask("https://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Service Area");
+
+      registry.byId("hslider").on("change", updateHorizontalLabel);
+      updateHorizontalLabel();
+
+      // Create function that updates label when changed
+      function updateHorizontalLabel() {
+        // Get access to nodes/widgets we need to get/set values
+        var hSlider = registry.byId("hslider");
+        var label = dom.byId("decValue");
+        // Update label
+        label.innerHTML = hSlider.get("value");
+        params.defaultBreaks = [ hSlider.value / 60 ];
+        if (clickpoint) {
+          mapClickHandler(clickpoint);
+        }
+      }
+
+      function mapClickHandler(evt) {
+        clickpoint = evt;
+        map.graphics.clear(); //clear existing graphics
+        //define the symbology used to display the results and input point
+        var pointSymbol = new SimpleMarkerSymbol(
+          "diamond",
+          20,
+          new SimpleLineSymbol(
+            "solid",
+            new Color([88,116,152]), 2
+          ),
+          new Color([88,116,152,0.45])
+        );
+        var inPoint = new Point(evt.mapPoint.x, evt.mapPoint.y, map.spatialReference);
+        var location = new Graphic(inPoint, pointSymbol);
+
+        map.graphics.add(location);
+        var features = [];
+        features.push(location);
+        var facilities = new FeatureSet();
+        facilities.features = features;
+        params.facilities = facilities;
+
+        //solve
+        serviceAreaTask.solve(params,function(solveResult){
+          var polygonSymbol = new SimpleFillSymbol(
+            "solid",
+            new SimpleLineSymbol("solid", new Color([232,104,80]), 2),
+            new Color([232,104,80,0.25])
+          );
+          arrayUtils.forEach(solveResult.serviceAreaPolygons, function(serviceArea){
+            serviceArea.setSymbol(polygonSymbol);
+            map.graphics.add(serviceArea);
+          });
+
+        }, function(err){
+          console.log(err.message);
+        });
+      }
     });
-    map.addLayer(georss);
-  });
-</script>
+  </script>
 </head>
 
-<body class="tundra">
-<div data-dojo-type="dijit/layout/BorderContainer"
-     data-dojo-props="design:'headline',gutters:false"
-     style="width: 100%; height: 100%; margin: 0;">
-  <div id="map"
-       data-dojo-type="dijit/layout/ContentPane"
-       data-dojo-props="region:'center'">
-    <div id="meta">
-      <h3>Display GeoRSS on a map</h3>
-      <br>
-      The map displays a simple GeoRSS file with points, lines and polygons.
+<body class="claro">
+  <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width:100%;height:100%;margin:0px;">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">
+      <b>Click to find the service area polygon</b>
+
+      <div style="width: 400px; margin: 10px">
+
+        <ol data-dojo-type="dijit/form/HorizontalRuleLabels"
+          data-dojo-props="
+            container: 'topDecoration',
+            style: 'height: 1.2em; font-weight: bold; margin: 0 12px;'">
+          <li>0:00</li>
+          <li>3:00</li>
+          <li>6:00</li>
+          <li>10:00</li>
+          <li>13:00</li>
+          <li>16:00</li>
+          <li>20:00</li>
+        </ol>
+        <div data-dojo-type="dijit/form/HorizontalRule"
+          data-dojo-props="
+            container: 'topDecoration',
+            count: 7,
+            style: 'height: 5px; margin: 0 12px;'">
+        </div>
+        <input id="hslider" value="60" type="range"
+          data-dojo-type="dijit/form/HorizontalSlider"
+          data-dojo-props="
+            minimum: 0,
+            maximum: 1200,
+            showButtons: false,
+            discreteValues: 60">
+        <div style="padding-top: 10px; text-align: center;">Travel time: <strong id="decValue"></strong> seconds</div>
+      </div>
+
     </div>
+
+    <div id="map" dojotype="dijit/layout/ContentPane" data-dojo-props="region:'center'"></div>
   </div>
-</div>
 </body>
 </html>
