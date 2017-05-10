@@ -10,7 +10,8 @@ urlpatterns = [
     #GenerateGeoRSS
     url(r'^GenerateGeoRSS$', views.GenerateGeoRSS, {'type':'GenerateGeoRSS'}, name='GenerateGeoRSS'),
     url(r'^goHome$', views.index, name='index'),
-    url(r'^MapView$', views.ObView, {'type':'ObView'}, name='ObView'),
+    url(r'^twentymindrive_map$', views.twentymindrive_map, {'type':'twentymindrive_map'}, name='twentymindrive_map'),
+    url(r'^waterlevel_map$', views.waterlevel_map, {'type': 'waterlevel_map'}, name='waterlevel_map'),
 
     #URL for Generic Create
     url(r'^watershed_new$', views.generic_create, {'type':'Watershed'}, name='watershed_new'),

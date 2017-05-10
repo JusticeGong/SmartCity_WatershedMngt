@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "customCSS.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
@@ -37,7 +49,7 @@
         Geoprocessor, FeatureSet,
         SimpleMarkerSymbol, SimpleFillSymbol,
         SimpleLineSymbol, esriConfig,
-        Color, dom
+        Color, dom, GeoRSSLayer, parser, arrayUtils, domStyle
       ) {
         esriConfig.defaults.io.proxyUrl = "/proxy/";
         esriConfig.defaults.io.alwaysUseProxy = false;
@@ -61,16 +73,7 @@
         symbol.style = SimpleMarkerSymbol.STYLE_SQUARE;
         symbol.setSize(8);
         symbol.setColor(new Color([255,255,0,0.5]));
-        censusBlockPointsLayer.setSelectionSymbol(symbol);
 
-        map.addLayer(censusBlockPointsLayer);
-
-        censusBlockPointsLayer.on("selection-complete", function() {
-          var totalPopulation = sumPopulation(censusBlockPointsLayer.getSelectedFeatures());
-          var r = "";
-          r = "<b>The total Census Block population within the drive time polygon is <i>" + totalPopulation + "</i>.</b>";
-          dom.byId('messages').innerHTML = r;
-        });
 
         function initFunctionality() {
           query = new Query();
@@ -79,7 +82,7 @@
 
           // Listen for map onClick event
           map.on("click", function(evt) {
-            censusBlockPointsLayer.clearSelection();
+
             map.graphics.clear();
 {#            var min = document.getElementById("minutes");#}
             var symbol = new SimpleMarkerSymbol();
@@ -92,7 +95,6 @@
             var params = { "Input_Location": featureSet, "Drive_Times": "15" };
             gp.outSpatialReference = map.spatialReference;
             gp.execute(params);
-            dom.byId("messages").innerHTML = "<b>Executing GP Task...</b>";
           });
 
           // Listen for GP execute-complete event
@@ -111,25 +113,29 @@
             map.graphics.add(feature);
 
             query.geometry = feature.geometry;
-            censusBlockPointsLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
-            dom.byId("messages").innerHTML = "<b>Selecting Features...</b>";
+
+
           });
         }
 
-        function sumPopulation(features) {
-          var popTotal = 0;
-          for (var x = 0; x < features.length; x++) {
-            popTotal = popTotal + features[x].attributes["POP2000"];
-          }
-          return popTotal;
-        }
       });
     </script>
   </head>
 
   <body class="claro">
-    Click the map to execute 240 minutes drive time and then use that result geometry as input into a query.
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-default navbar-fixed-top customNavBar">
+    <div class="container-fluid">
+        <p class="navbar-text customNavBarLink"><a href="{% url 'watershed:GenerateGeoRSS' %}" class="navbar-link"> Home</a></p>
+
+        <p class="navbar-text customNavBarLink"><a href="{% url 'watershed:twentymindrive_map' %}" class="navbar-link">20-Min-Travel</a></p>
+        <p class="navbar-text customNavBarLink"><a href="{% url 'watershed:waterlevel_map' %}" class="navbar-link">Water Test</a></p>
+        <p class="navbar-text navbar-right customNavBarLink">
+            <a class="navbar-link  " href="http://smartcities.mbrxdram5u.us-west-2.elasticbeanstalk.com/waterevent/"> Stormwater System</a></p>
+  </div>
+</nav>
+    Where to travel within 20 min drive?
     <div id="mapDiv"></div>
-    <span id="messages"></span>
   </body>
 </html>

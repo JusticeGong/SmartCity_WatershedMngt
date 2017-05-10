@@ -11,8 +11,12 @@ from django.http import Http404
 # #Generate GeoRSS
 # def GeoRSS
 
-def ObView(request, type):
-    template_name = 'watershed/ObservationMap.html'
+def twentymindrive_map(request, type):
+    template_name = 'watershed/twentymindrive_map.html'
+    return render(request, template_name)
+
+def waterlevel_map(request, type):
+    template_name = 'watershed/waterlevel_map.html'
     return render(request, template_name)
 
 def GenerateGeoRSS(request, type):
